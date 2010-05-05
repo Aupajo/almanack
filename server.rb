@@ -1,10 +1,13 @@
 require 'sinatra'
+require 'net/http'
+require 'uri'
 require 'ri_cal'
 
+set :gcal, "61s2re9bfk01abmla4d17tojuo@group.calendar.google.com"
 set :lookahead, 30 # days
 
 get '/' do
-  ical_string = IO.read 'basic.ics'
+  ical_string = Net::HTTP.get URI.parse("http://www.google.com/calendar/ical/#{options.gcal}/public/basic.ics")
   components = RiCal.parse_string ical_string
   @calendar = components.first
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value
@@ -33,7 +36,7 @@ __END__
     -for event in @events
       .event
         .date
-          .month=event.start_time.strftime '%b'
+          .month=event.start_time.strftime '%a'
           .day=event.start_time.strftime '%d'
         .details
           %h3=event.summary
@@ -47,7 +50,8 @@ __END__
             %dd
               =event.start_time.strftime('%I:%M%p')
               &mdash;
-              =event.finish_time.strftime('%I:%M%p')
+              #{event.finish_time.strftime('%I:%M%p')},
+              =event.start_time.strftime('%d %b %Y')
 
 
 @@ stylesheet
