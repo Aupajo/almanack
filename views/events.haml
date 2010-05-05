@@ -24,10 +24,11 @@
             %dt When
             %dd=format_time_range(event.start_time, event.finish_time)
     %footer
-      %a{ :href => gcal_url }
-        Download (iCal)
-      %a{ :href => gcal_feed_url }
-        Subscribe to Feed
+      .subscribe
+        %a{ :href => gcal_url }
+          Download (iCal)
+        %a{ :href => gcal_feed_url }
+          Subscribe to Feed
       .add
         Want to add your events?
         %a{ :href => 'http://twitter.com/Aupajo' }
