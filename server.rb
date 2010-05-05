@@ -22,10 +22,20 @@ helpers do
   def to_timezone(datetime)
     options.timezone.utc_to_local(datetime.new_offset(0))
   end
+  
+  def gcal_url
+    "http://www.google.com/calendar/ical/#{options.gcal}/public/basic.ics"
+  end
+  
+  def gcal_feed_url
+    "http://www.google.com/calendar/feeds/#{options.gcal}/public/basic"
+  end
+  
+  alias_method :h, :escape_html
 end
 
 get '/' do
-  ical_string = Net::HTTP.get URI.parse("http://www.google.com/calendar/ical/#{options.gcal}/public/basic.ics")
+  ical_string = Net::HTTP.get URI.parse(gcal_url)
   components = RiCal.parse_string ical_string
   @calendar = components.first
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value

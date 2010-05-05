@@ -14,12 +14,17 @@
           .month=to_timezone(event.start_time).strftime '%a'
           .day=to_timezone(event.start_time).strftime '%d'
         .details
-          %h3=event.summary
+          %h3=h event.summary
           -if !event.description.empty?
-            .description=event.description
+            .description=h event.description
           %dl
             -if !event.location.empty?
               %dt Where
-              %dd=event.location
+              %dd=h event.location
             %dt When
             %dd=format_time_range(event.start_time, event.finish_time)
+    %footer
+      %a{ :href => gcal_url }
+        Download (iCal)
+      %a{ :href => gcal_feed_url }
+        Subscribe to Feed

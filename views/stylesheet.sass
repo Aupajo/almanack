@@ -13,7 +13,13 @@ body
   font: 12pt/1.6em "Helvetica Neue", Helvetica, sans-serif
   margin: 2em auto
   width: 600px
+
+a
+  text-decoration: none
   
+  &:link, &:visited
+    color: #8AA0B6
+
 .event
   background-color: #efefef
   background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#efefef))
@@ -42,14 +48,25 @@ body
     margin: 0
     width: 420px
 
-header
-  border-bottom: 1px solid #ccc
+header, footer
   // display: block for browsers with poor HTML5 support
   display: block
+
+
+header
+  border-bottom: 1px solid #ccc
   overflow: hidden
   padding-bottom: 0.5em
   margin-bottom: 1em
-  -webkit-box-shadow: 0 1px 0 #f6f6f6
+  +box-shadow(0, 1px, 0, #f6f6f6)
+
+footer
+  border-top: 1px solid #ccc
+  font-size: 0.9em
+  padding: 1em
+  
+  a
+    margin-right: 1em
 
 h1, h2, h3, h4
   margin: 0
