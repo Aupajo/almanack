@@ -4,6 +4,7 @@ require 'net/http'
 require 'uri'
 require 'ri_cal'
 
+# TODO: move to external config
 set :gcal, "61s2re9bfk01abmla4d17tojuo@group.calendar.google.com"
 set :lookahead, 30 # days
 set :timezone, TZInfo::Timezone.get('Pacific/Auckland')
@@ -34,7 +35,10 @@ helpers do
   alias_method :h, :escape_html
 end
 
+# TODO: Add caching support
+
 get '/' do
+  # TODO: Tidy, separate out, error handling support
   ical_string = Net::HTTP.get URI.parse(gcal_url)
   components = RiCal.parse_string ical_string
   @calendar = components.first
