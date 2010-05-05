@@ -11,8 +11,8 @@
     -for event in @events
       .event
         .date
-          .month=event.start_time.strftime '%a'
-          .day=event.start_time.strftime '%d'
+          .month=to_timezone(event.start_time).strftime '%a'
+          .day=to_timezone(event.start_time).strftime '%d'
         .details
           %h3=event.summary
           -if !event.description.empty?
@@ -22,8 +22,4 @@
               %dt Where
               %dd=event.location
             %dt When
-            %dd
-              =event.start_time.strftime('%I:%M%p')
-              &mdash;
-              #{event.finish_time.strftime('%I:%M%p')},
-              =event.start_time.strftime('%d %b %Y')
+            %dd=format_time_range(event.start_time, event.finish_time)
