@@ -1,18 +1,28 @@
+=border-radius(!size)
+  border-radius = !size
+  -moz-border-radius = !size
+
+=box-shadow(!x, !y, !size, !colour)
+  -webkit-box-shadow = !x !y !size !colour
+  -moz-box-shadow = !x !y !size !colour
+
 body
   background-color: #e3e3e3
   color: #595959
   font: 12pt/1.6em "Helvetica Neue", Helvetica, sans-serif
   margin: 2em auto
   width: 600px
-
+  
 .event
+  background-color: #efefef
   background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#efefef))
+  background: -moz-linear-gradient(top, #f9f9f9, #efefef)
   border-top: 1px solid white
-  border-radius: 4px
+  +border-radius(4px)
   overflow: hidden
   padding: 20px
   margin-bottom: 1em
-  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3)
+  +box-shadow(0, 1px, 3px, rgba(0,0,0,0.3))
   
   .details
     float: right
@@ -33,6 +43,8 @@ body
 
 header
   border-bottom: 1px solid #ccc
+  // display: block for browsers with poor HTML5 support
+  display: block
   overflow: hidden
   padding-bottom: 0.5em
   margin-bottom: 1em
@@ -63,7 +75,7 @@ h4
 
 .date
   background-color: #c00
-  border-radius: 4px
+  +border-radius(4px)
   color: white
   float: left
   text-align: center
