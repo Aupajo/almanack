@@ -3,15 +3,6 @@ require 'ri_cal'
 
 set :lookahead, 30 # days
 
-helpers do
-  def show_if_available(event, *properties)
-    properties.map do |prop|
-      next if event.send(prop).empty?
-      "<div class='#{prop.to_s}'>#{event.send(prop)}</div>"
-    end
-  end
-end
-
 get '/' do
   ical_string = IO.read 'basic.ics'
   components = RiCal.parse_string ical_string
@@ -46,7 +37,18 @@ __END__
           .day=event.start_time.strftime '%d'
         .details
           %h3=event.summary
-          =show_if_available event, :description, :location
+          -if !event.description.empty?
+            .description=event.description
+          %dl
+            -if !event.location.empty?
+              %dt Where
+              %dd=event.location
+            %dt When
+            %dd
+              =event.start_time.strftime('%I:%M%p')
+              &mdash;
+              =event.finish_time.strftime('%I:%M%p')
+
 
 @@ stylesheet
 
@@ -70,8 +72,18 @@ body
     float: right
     width: 480px
   
-  .location
+  dl
+    color: #777
     font-size: 0.9em
+  
+  dt
+    font-weight: bold
+    float: left
+  
+  dd
+    float: right
+    margin: 0
+    width: 420px
 
 header
   border-bottom: 1px solid #ccc
@@ -80,7 +92,7 @@ header
   margin-bottom: 1em
   -webkit-box-shadow: 0 1px 0 #f6f6f6
 
-h1, h2, h3
+h1, h2, h3, h4
   margin: 0
   text-shadow: 0 1px 0 white
 
@@ -94,6 +106,14 @@ h2
   font-size: 1em
   float: right
   text-transform: uppercase
+
+h3
+  color: #333
+
+h4
+  display: inline
+  font-size: 1em
+  margin-right: 1em
 
 .date
   background-color: #c00
