@@ -44,6 +44,7 @@ get '/' do
   @calendar = components.first
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value
   occurrences = @calendar.events.map do |e|
+    # TODO: support timezone
     e.occurrences(:starting => Date.today, :before => Date.today + options.lookahead)
   end
   @events = occurrences.flatten.sort { |a,b| a.start_time <=> b.start_time }
