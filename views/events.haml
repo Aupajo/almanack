@@ -1,0 +1,28 @@
+!!! 5
+%html
+  %head
+    %title Events
+    %link{ :href => '/stylesheet.css', :rel => 'stylesheet', :type => 'text/css', :media => 'screen', :charset => 'utf-8' }
+  %body
+    %header
+      %h1 #{@calendar_name}
+      %h2 The Next #{options.lookahead} Days
+    -for event in @events
+      .event
+        .date
+          .month=event.start_time.strftime '%a'
+          .day=event.start_time.strftime '%d'
+        .details
+          %h3=event.summary
+          -if !event.description.empty?
+            .description=event.description
+          %dl
+            -if !event.location.empty?
+              %dt Where
+              %dd=event.location
+            %dt When
+            %dd
+              =event.start_time.strftime('%I:%M%p')
+              &mdash;
+              #{event.finish_time.strftime('%I:%M%p')},
+              =event.start_time.strftime('%d %b %Y')
