@@ -5,9 +5,7 @@ Sinatra GCal
 
 Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
-See a demo running at:
-
-  http://christchurch.events.geek.nz
+See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
 
 Configuration
 -------------
@@ -24,4 +22,4 @@ Still marked TODO:
 
 * Caching support (currently fetches the calendar every time a request is made)
 * Tidy up the request code
-* Remove the http://events.geek.nz specific stuff
+* Remove the [http://events.geek.nz](http://events.geek.nz) specific stuff
