@@ -1,0 +1,33 @@
+--- 
+dependencies: 
+  tzinfo: 
+    group: 
+    - :default
+    version: ">= 0"
+  haml: 
+    group: 
+    - :default
+    version: ">= 0"
+  ri_cal: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra: 
+    group: 
+    - :default
+    version: ">= 0"
+specs: 
+- haml: 
+    version: 2.2.20
+- rack: 
+    version: 1.1.0
+- ri_cal: 
+    version: 0.8.7
+- sinatra: 
+    version: "1.0"
+- tzinfo: 
+    version: 0.3.20
+hash: 3d156c8eb9f329a3cdccad3b410d18728b85a802
+sources: 
+- Rubygems: 
+    uri: http://rubygems.org
