@@ -3,11 +3,17 @@ require 'tzinfo'
 require 'net/http'
 require 'uri'
 require 'ri_cal'
+require 'yaml'
 
-# TODO: move to external config
-set :gcal, "61s2re9bfk01abmla4d17tojuo@group.calendar.google.com"
-set :lookahead, 30 # days
-set :timezone, TZInfo::Timezone.get('Pacific/Auckland')
+
+
+configure do
+  config_file = File.expand_path(File.join(File.dirname(__FILE__)), 'config.yml')
+  config = YAML.load_file(config_file)
+  set :gcal, config['gcal']
+  set :lookahead, config['lookahead']
+  set :timezone, TZInfo::Timezone.get(config['timezone'])
+end
 
 helpers do
   def format_time_range(start_time, end_time)
