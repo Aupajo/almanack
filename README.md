@@ -22,4 +22,3 @@ Still marked TODO:
 
 * Caching support (currently fetches the calendar every time a request is made)
 * Tidy up the request code
-* Remove the [http://events.geek.nz](http://events.geek.nz) specific stuff
