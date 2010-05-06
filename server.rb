@@ -1,3 +1,7 @@
+require "rubygems"
+require "bundler"
+Bundler.setup
+
 require 'sinatra'
 require 'tzinfo'
 require 'net/http'

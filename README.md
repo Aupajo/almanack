@@ -10,16 +10,11 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 Setting up
 ----------
 
+Install requirements with `bundle install`.
+
 Copy `config.example.yml` to `config.yml`, adjust as you need.
 
-Gems required:
-
-* sinatra
-* haml
-* tzinfo
-* ri_cal
-
-Run with `ruby server.rb` or `shotgun server.rb`.
+Run with `ruby server.rb` (or `shotgun server.rb`).
 
 Configuration
 -------------
