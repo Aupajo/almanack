@@ -5,6 +5,8 @@ Sinatra GCal
 
 Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
+![Sinatra GCal Example](http://imgur.com/odgyR.png)
+
 See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
 
 Setting up
