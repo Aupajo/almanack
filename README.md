@@ -1,7 +1,7 @@
 Sinatra GCal
 ============
 
-**Note:** Hack and play, but beware: this is alpha code.
+**Note:** Hack and play, but beware: this is beta code.
 
 Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
