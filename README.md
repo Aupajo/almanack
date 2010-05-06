@@ -7,12 +7,19 @@ Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
 See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
 
+Setting up
+----------
+
+Copy `config.example.yml` to `config.yml`, adjust as you need.
+
 Gems required:
 
 * sinatra
 * haml
 * tzinfo
 * ri_cal
+
+Run with `ruby server.rb` or `shotgun server.rb`.
 
 Configuration
 -------------
