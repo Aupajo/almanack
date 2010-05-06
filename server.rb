@@ -5,8 +5,6 @@ require 'uri'
 require 'ri_cal'
 require 'yaml'
 
-
-
 configure do
   config_file = File.expand_path(File.join(File.dirname(__FILE__)), 'config.yml')
   config = YAML.load_file(config_file)
