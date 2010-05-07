@@ -56,8 +56,9 @@ get '/' do
   components = RiCal.parse_string ical_string
   @calendar = components.first
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value
+  @today = to_timezone_date(DateTime.now)
   occurrences = @calendar.events.map do |e|
-    e.occurrences(:starting => to_timezone_date(DateTime.now), :before => to_timezone_date(DateTime.now) + options.lookahead)
+    e.occurrences(:starting => @today, :before => @today + options.lookahead)
   end
   @events = occurrences.flatten.sort { |a,b| a.start_time <=> b.start_time }
   haml :events
