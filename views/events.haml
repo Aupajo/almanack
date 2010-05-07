@@ -9,7 +9,7 @@
       %h1=@calendar_name
       %h2 The Next #{options.lookahead} Days
     -for event in @events
-      .event
+      .event{ :class => (to_timezone(event.start_time) === @today ? 'today' : '') }
         .date
           .month=to_timezone(event.start_time).strftime '%a'
           .day=to_timezone(event.start_time).strftime '%d'
