@@ -32,6 +32,11 @@ helpers do
     options.timezone.utc_to_local(datetime.new_offset(0))
   end
   
+  def to_timezone_date(datetime)
+    current = to_timezone(datetime)
+    Date.new(current.year, current.month, current.day)
+  end
+  
   def gcal_url
     "http://www.google.com/calendar/ical/#{options.gcal}/public/basic.ics"
   end
@@ -52,7 +57,7 @@ get '/' do
   @calendar = components.first
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value
   occurrences = @calendar.events.map do |e|
-    e.occurrences(:starting => to_timezone(DateTime.now), :before => to_timezone(DateTime.now) + options.lookahead)
+    e.occurrences(:starting => to_timezone_date(DateTime.now), :before => to_timezone_date(DateTime.now) + options.lookahead)
   end
   @events = occurrences.flatten.sort { |a,b| a.start_time <=> b.start_time }
   haml :events
