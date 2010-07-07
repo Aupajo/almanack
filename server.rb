@@ -8,6 +8,7 @@ require 'net/http'
 require 'uri'
 require 'ri_cal'
 require 'yaml'
+require 'rdiscount'
 
 configure do
   config_file = File.expand_path(File.join(File.dirname(__FILE__)), 'config.yml')
@@ -22,6 +23,10 @@ helpers do
     output = format_time(start_time)
     output << " &mdash; #{format_time(end_time)}" unless end_time.nil?
     output << ", #{to_timezone(start_time).strftime('%d %b %Y')}"
+  end
+  
+  def markdown(text)
+    RDiscount.new(escape_html(text)).to_html
   end
   
   def format_time(datetime)

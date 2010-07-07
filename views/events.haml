@@ -16,7 +16,7 @@
         .details
           %h3=h event.summary
           -if !event.description.empty?
-            .description=h event.description
+            .description=markdown event.description
           %dl
             -if !event.location.empty?
               %dt Where

@@ -1,33 +1,39 @@
 --- 
-dependencies: 
-  tzinfo: 
-    group: 
-    - :default
-    version: ">= 0"
-  haml: 
-    group: 
-    - :default
-    version: ">= 0"
-  ri_cal: 
-    group: 
-    - :default
-    version: ">= 0"
-  sinatra: 
-    group: 
-    - :default
-    version: ">= 0"
+hash: 51733af73bf53386b1f7c2d3937806e14c8a866e
+sources: 
+- Rubygems: 
+    uri: http://rubygems.org
 specs: 
 - haml: 
-    version: 2.2.20
+    version: 3.0.12
 - rack: 
     version: 1.1.0
+- rdiscount: 
+    version: 1.6.3.2
 - ri_cal: 
     version: 0.8.7
 - sinatra: 
     version: "1.0"
 - tzinfo: 
-    version: 0.3.20
-hash: 3d156c8eb9f329a3cdccad3b410d18728b85a802
-sources: 
-- Rubygems: 
-    uri: http://rubygems.org
+    version: 0.3.22
+dependencies: 
+  sinatra: 
+    version: ">= 0"
+    group: 
+    - :default
+  haml: 
+    version: ">= 0"
+    group: 
+    - :default
+  tzinfo: 
+    version: ">= 0"
+    group: 
+    - :default
+  ri_cal: 
+    version: ">= 0"
+    group: 
+    - :default
+  rdiscount: 
+    version: ">= 0"
+    group: 
+    - :default
