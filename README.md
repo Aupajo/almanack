@@ -1,11 +1,9 @@
 Sinatra GCal
 ============
 
-**Note:** Hack and play, but beware: this is beta code.
-
 Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
-![Sinatra GCal Example](http://imgur.com/odgyR.png)
+![Sinatra GCal Example](http://i.imgur.com/odgyR.png)
 
 See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
 
@@ -14,9 +12,9 @@ Setting up
 
 Install requirements with `bundle install`.
 
-Set your calendar in `config.yml' as needed. The calendar must be public.
+Customize your calendar settings in `config.yml' as needed (see below).
 
-Run with `ruby server.rb` (or `shotgun server.rb`).
+Run with `ruby server.rb` (or `shotgun server.rb` if you're developing).
 
 Configuration
 -------------
@@ -32,7 +30,11 @@ Running Live
 
 A `config.ru` has been provided that should be enough to get you up-and-running in any environment. 
 
-If you'd like to get up-and-running on Heroku, it's as simple as `heroku create --stack cedar`.
+If you'd like to get up-and-running on Heroku: 
+
+    heroku create --stack cedar
+    git push heroku master
+    heroku open
 
 
 Laundry List
