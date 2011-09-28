@@ -12,7 +12,7 @@ Setting up
 
 Install requirements with `bundle install`.
 
-Customize your calendar settings in `config.yml' as needed (see below).
+Customize your calendar settings in `config.yml` as needed (see below).
 
 Run with `ruby server.rb` (or `shotgun server.rb` if you're developing).
 
