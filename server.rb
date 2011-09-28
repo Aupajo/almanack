@@ -10,7 +10,7 @@ require 'yaml'
 require 'rdiscount'
 
 configure do
-  config_file = File.expand_path(File.join(File.dirname(__FILE__)), 'config.yml')
+  config_file = File.join(File.dirname(__FILE__), 'config.yml')
   config = YAML.load_file(config_file)
   set :gcal, config['gcal']
   set :lookahead, config['lookahead']

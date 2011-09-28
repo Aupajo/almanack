@@ -30,18 +30,7 @@ You can set the following in `config.yml`.
 Running Live
 ------------
 
-If you're using Passenger, a `config.ru` like this will do nicely:
-
-    require 'rubygems'
-    require 'sinatra'
-
-    set :environment, :production
-    disable :run
-
-    require 'haml'
-    require 'server'
-
-    run Sinatra::Application
+A `config.ru` has been provided that should be enough to get you up-and-running in any environment.
     
 
 Laundry List
