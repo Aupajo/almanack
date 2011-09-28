@@ -32,6 +32,8 @@ Running Live
 
 A `config.ru` has been provided that should be enough to get you up-and-running in any environment. 
 
+If you'd like to get up-and-running on Heroku, it's as simple as `heroku create --stack cedar`.
+
 
 Laundry List
 ------------
