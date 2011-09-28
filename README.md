@@ -14,7 +14,7 @@ Setting up
 
 Install requirements with `bundle install`.
 
-Copy `config.example.yml` to `config.yml`, adjust as you need.
+Set your calendar in `config.yml' as needed. The calendar must be public.
 
 Run with `ruby server.rb` (or `shotgun server.rb`).
 
@@ -30,8 +30,8 @@ You can set the following in `config.yml`.
 Running Live
 ------------
 
-A `config.ru` has been provided that should be enough to get you up-and-running in any environment.
-    
+A `config.ru` has been provided that should be enough to get you up-and-running in any environment. 
+
 
 Laundry List
 ------------
