@@ -41,7 +41,9 @@ Options can be set via environment variables.
 
 ## Developing locally
 
-Sinatra GCal is written in [Ruby](http://ruby-lang.org) (Ruby 1.9.3). With [Bundler](http://gembundler.com) installed:
+Sinatra GCal is written in [Ruby](http://ruby-lang.org) (Ruby 1.9.3 recommended).
+
+With [Bundler](http://gembundler.com) installed:
 
     bundle install
 
