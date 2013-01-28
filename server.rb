@@ -1,5 +1,4 @@
-require "rubygems"
-require "bundler/setup"
+require 'bundler/setup'
 
 require 'sinatra'
 require 'tzinfo'
@@ -11,10 +10,17 @@ require 'rdiscount'
 
 configure do
   config_file = File.join(File.dirname(__FILE__), 'config.yml')
-  config = YAML.load_file(config_file)
-  set :gcal, config['gcal']
-  set :lookahead, config['lookahead']
-  set :timezone, TZInfo::Timezone.get(config['timezone'])
+  config = {}
+  
+  if File.exists?(config_file)
+    warn "Warning: config.yml is deprecated, and will be removed in a future version of Sinatra GCal. Refer to the README on how to use environment variables instead."
+    config = YAML.load_file(config_file)
+  end
+  
+  set :gcal, ENV['GCAL_CALENDAR_ID'] || config['gcal']
+  set :days_lookahead, (ENV['GCAL_LOOKAHEAD'] || config['lookahead'] || 30).to_i
+  set :timezone, TZInfo::Timezone.get(ENV['TIMEZONE']) || config['timezone']
+  set :allow_html, (ENV['ALLOW_HTML'] || false)
 end
 
 helpers do
@@ -25,7 +31,8 @@ helpers do
   end
   
   def markdown(text)
-    RDiscount.new(escape_html(text)).to_html
+    content = settings.allow_html ? text : escape_html(text)
+    RDiscount.new(content).to_html
   end
   
   def format_time(datetime)
@@ -33,7 +40,7 @@ helpers do
   end
   
   def to_timezone(datetime)
-    options.timezone.utc_to_local(datetime.new_offset(0))
+    settings.timezone.utc_to_local(datetime.new_offset(0))
   end
   
   def to_timezone_date(datetime)
@@ -42,11 +49,11 @@ helpers do
   end
   
   def gcal_url
-    "http://www.google.com/calendar/ical/#{options.gcal}/public/basic.ics"
+    "http://www.google.com/calendar/ical/#{settings.gcal}/public/basic.ics"
   end
   
   def gcal_feed_url
-    "http://www.google.com/calendar/feeds/#{options.gcal}/public/basic"
+    "http://www.google.com/calendar/feeds/#{settings.gcal}/public/basic"
   end
   
   alias_method :h, :escape_html
@@ -62,7 +69,7 @@ get '/' do
   @calendar_name = @calendar.x_properties['X-WR-CALNAME'].first.value
   @today = to_timezone_date(DateTime.now)
   occurrences = @calendar.events.map do |e|
-    e.occurrences(:starting => @today, :before => @today + options.lookahead)
+    e.occurrences(:starting => @today, :before => @today + settings.days_lookahead)
   end
   @events = occurrences.flatten.sort { |a,b| a.start_time <=> b.start_time }
   haml :events

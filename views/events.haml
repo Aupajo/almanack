@@ -7,7 +7,7 @@
   %body
     %header
       %h1=@calendar_name
-      %h2 The Next #{options.lookahead} Days
+      %h2 The Next #{settings.days_lookahead} Days
     -for event in @events
       .event{ :class => (to_timezone(event.start_time) === @today ? 'today' : '') }
         .date
