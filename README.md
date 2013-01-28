@@ -36,7 +36,7 @@ Options can be set via environment variables.
 
 * `GCAL_CALENDAR_ID` -- Mandatory, the Google Calendar ID (see above)
 * `TIMEZONE` -- Mandatory, the timezone in which to display the calendar
-* `GCAL_LOOKAHEAD` -- Optional, how many days ahead to show (default is 30)
+* `DAYS_LOOKAHEAD` -- Optional, how many days ahead to show (default is 30)
 * `ALLOW_HTML` -- Optional, whether to allow HTML in event descriptions (default is false)
 
 ## Developing locally

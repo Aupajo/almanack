@@ -18,7 +18,7 @@ configure do
   end
   
   set :gcal, ENV['GCAL_CALENDAR_ID'] || config['gcal']
-  set :days_lookahead, (ENV['GCAL_LOOKAHEAD'] || config['lookahead'] || 30).to_i
+  set :days_lookahead, (ENV['DAYS_LOOKAHEAD'] || config['lookahead'] || 30).to_i
   set :timezone, TZInfo::Timezone.get(ENV['TIMEZONE']) || config['timezone']
   set :allow_html, (ENV['ALLOW_HTML'] || false)
 end
