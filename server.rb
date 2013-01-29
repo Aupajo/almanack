@@ -21,6 +21,7 @@ configure do
   set :days_lookahead, (ENV['DAYS_LOOKAHEAD'] || config['lookahead'] || 30).to_i
   set :timezone, TZInfo::Timezone.get(ENV['TIMEZONE']) || config['timezone']
   set :allow_html, (ENV['ALLOW_HTML'] || false)
+  set :twitter, ENV['TWITTER']
 end
 
 helpers do

@@ -38,6 +38,7 @@ Options can be set via environment variables.
 * `TIMEZONE` -- Mandatory, the timezone in which to display the calendar
 * `DAYS_LOOKAHEAD` -- Optional, how many days ahead to show (default is 30)
 * `ALLOW_HTML` -- Optional, whether to allow HTML in event descriptions (default is false)
+* `TWITTER` --- Add a link to a Twitter account at the bottom of the page
 
 ## Developing locally
 

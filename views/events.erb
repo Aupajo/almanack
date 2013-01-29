@@ -43,8 +43,15 @@
         <a href="<%= gcal_feed_url %>">Subscribe (feed)</a>
       </div>
       
+      <% if settings.twitter %>
+        <div class="add">
+          Want to add an event? <a href="http://twitter.com/<%= settings.twitter %>">@<%= settings.twittter %></a>
+        </div>
+      <% end %>
+      
       <div class="fork">
         Powered by <a href="http://github.com/Aupajo/sinatra-gcal">Sinatra GCal</a>.
+        <a href="http://github.com/Aupajo/sinatra-gcal/issues/">Bugs? Features?</a>
       </div>
     </footer>
   </body>
