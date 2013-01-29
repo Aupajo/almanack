@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @calendar_name %></title>
+    <link rel="stylesheet" href="/stylesheet.css" type="text/css" media="screen" charset="utf-8">
+    <meta name="viewport" content="width=620">
+  </head>
+  <body>
+    <header>
+      <h1><%= @calendar_name %>
+      <h2>The Next <%= settings.days_lookahead %> Days</h2>
+    </header>
+    
+    <% @events.each do |event| %>
+      <div class="event <%= to_timezone(event.start_time) === @today ? 'today' : '' %>">
+        <div class="date">
+          <div class="month"><%= to_timezone(event.start_time).strftime '%a' %></div>
+          <div class="day"><%= to_timezone(event.start_time).strftime '%d' %></div>
+        </div>
+        <div class="details">
+          <h3><%= h event.summary %></h3>
+          <% if !event.description.empty? %>
+            <div class="description">
+              <%= markdown event.description %>
+            </div>
+          <% end %>
+          
+          <dl>
+            <% if !event.location.empty? %>
+              <dt>Where</dt>
+              <dd><%= h event.location %></dd>
+            <% end %>
+            <dt>When</dt>
+            <dd><%= format_time_range(event.start_time, event.finish_time) %></dd>
+          </dl>
+        </div>
+      </div>
+    <% end %>
+    
+    <footer>
+      <div class="subscribe">
+        <a href="<%= gcal_url %>">Subscribe (iCal)</a>
+        <a href="<%= gcal_feed_url %>">Subscribe (feed)</a>
+      </div>
+      
+      <div class="fork">
+        Powered by <a href="http://github.com/Aupajo/sinatra-gcal">Sinatra GCal</a>.
+      </div>
+    </footer>
+  </body>
+</html>

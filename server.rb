@@ -72,7 +72,7 @@ get '/' do
     e.occurrences(:starting => @today, :before => @today + settings.days_lookahead)
   end
   @events = occurrences.flatten.sort { |a,b| a.start_time <=> b.start_time }
-  haml :events
+  erb :events
 end
 
 get '/stylesheet.css' do
