@@ -14,7 +14,8 @@ configure do
 end
 
 class Calendar
-  def initialize(timezone, days_lookahead)
+  def initialize(slug, timezone, days_lookahead)
+    @slug = slug
     @timezone = timezone
     @days_lookahead = days_lookahead
 
@@ -23,7 +24,7 @@ class Calendar
   attr_reader :timezone, :days_lookahead, :name, :today, :events
 
   def gcal
-    ENV['GCAL_CALENDAR_ID']
+    (@slug.nil? || @slug.empty?) ? ENV['GCAL_CALENDAR_ID'] : ENV["GCAL_CALENDAR_ID_#{@slug.upcase}"]
   end
 
   def gcal_url
@@ -90,13 +91,13 @@ end
 
 # TODO: Add caching support
 
-get '/' do
-  # TODO: Tidy, separate out, error handling support
-  @calendar = Calendar.new(timezone, days_lookahead)
-  erb :events
-end
-
 get '/stylesheet.css' do
   content_type 'text/css'
   sass :stylesheet
+end
+
+get '/:slug?' do |slug|
+  # TODO: Tidy, separate out, error handling support
+  @calendar = Calendar.new(slug, timezone, days_lookahead)
+  erb :events
 end
