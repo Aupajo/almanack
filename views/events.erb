@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @calendar_name %></title>
+    <title><%= @calendar.name %></title>
     <link rel="stylesheet" href="/stylesheet.css" type="text/css" media="screen" charset="utf-8">
     <meta name="viewport" content="width=620">
   </head>
   <body>
     <header>
-      <h1><%= @calendar_name %>
-      <h2>The Next <%= settings.days_lookahead %> Days</h2>
+      <h1><%= @calendar.name %>
+      <h2>The Next <%= days_lookahead %> Days</h2>
     </header>
-    
-    <% @events.each do |event| %>
+
+    <% @calendar.events.each do |event| %>
       <div class="event <%= to_timezone(event.start_time) === @today ? 'today' : '' %>">
         <div class="date">
           <div class="month"><%= to_timezone(event.start_time).strftime '%a' %></div>
@@ -24,7 +24,7 @@
               <%= markdown event.description %>
             </div>
           <% end %>
-          
+
           <dl>
             <% if !event.location.empty? %>
               <dt>Where</dt>
@@ -36,19 +36,19 @@
         </div>
       </div>
     <% end %>
-    
+
     <footer>
       <div class="subscribe">
-        <a href="<%= gcal_url %>">Subscribe (iCal)</a>
-        <a href="<%= gcal_feed_url %>">Subscribe (feed)</a>
+        <a href="<%= @calendar.gcal_url %>">Subscribe (iCal)</a>
+        <a href="<%= @calendar.gcal_feed_url %>">Subscribe (feed)</a>
       </div>
-      
+
       <% if settings.twitter %>
         <div class="add">
           Want to add an event? <a href="http://twitter.com/<%= settings.twitter %>">@<%= settings.twitter %></a>
         </div>
       <% end %>
-      
+
       <div class="fork">
         Powered by <a href="http://github.com/Aupajo/sinatra-gcal">Sinatra GCal</a>.
         <a href="http://github.com/Aupajo/sinatra-gcal/issues/">Bugs? Features?</a>
