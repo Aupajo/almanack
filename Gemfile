@@ -5,3 +5,7 @@ gem "sass"
 gem "tzinfo"
 gem "ri_cal"
 gem "rdiscount"
+
+group :development do
+  gem "foreman"
+end
