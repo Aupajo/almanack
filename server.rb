@@ -28,11 +28,11 @@ class Calendar
   end
 
   def gcal_url
-    "http://www.google.com/calendar/ical/#{gcal}/public/basic.ics"
+    "https://www.google.com/calendar/ical/#{gcal}/public/basic.ics"
   end
 
   def gcal_feed_url
-    "http://www.google.com/calendar/feeds/#{gcal}/public/basic"
+    "https://www.google.com/calendar/feeds/#{gcal}/public/basic"
   end
 
   def parse
