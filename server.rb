@@ -35,8 +35,19 @@ class Calendar
     "https://www.google.com/calendar/feeds/#{gcal}/public/basic"
   end
 
+  def request
+    uri = URI.parse(gcal_url)
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    https.start do |http|
+      return http.get(uri.request_uri)
+    end
+  end
+
   def parse
-    ical_string = Net::HTTP.get URI.parse(gcal_url)
+    ical_string = request.body
     components = RiCal.parse_string ical_string
     calendar = components.first
     @name = calendar.x_properties['X-WR-CALNAME'].first.value
