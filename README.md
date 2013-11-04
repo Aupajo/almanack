@@ -1,5 +1,8 @@
 # Sinatra GCal
 
+[![Dependency
+Status](https://gemnasium.com/Aupajo/sinatra-gcal.png)](https://gemnasium.com/Aupajo/sinatra-gcal)
+
 Show off your Google Calendar in a nifty, Sinatra-powered events page.
 
 ![Sinatra GCal example](http://i.imgur.com/odgyR.png)
