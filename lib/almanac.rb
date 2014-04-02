@@ -1,13 +1,10 @@
+require "sinatra"
 require "almanac/version"
 
 module Almanac
-  class Server
-    def self.call(env)
-      status = 200
-      headers = {}
-      body = Almanac::EVENTS.map { |e| e[:title] }
-
-      [status, headers, body]
+  class Server < Sinatra::Base
+    get "/" do
+      Almanac::EVENTS.map { |e| e[:title] }
     end
   end
 end
