@@ -1,5 +1,8 @@
 # Almanac
 
+[![Build Status](https://travis-ci.org/Aupajo/sinatra-gcal.svg)](https://travis-ci.org/Aupajo/sinatra-gcal)
+[![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
+
 TODO: Write a gem description
 
 ## Installation
