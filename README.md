@@ -1,61 +1,29 @@
-# Sinatra GCal
+# Almanac
 
-[![Dependency
-Status](https://gemnasium.com/Aupajo/sinatra-gcal.png)](https://gemnasium.com/Aupajo/sinatra-gcal)
+TODO: Write a gem description
 
-Show off your Google Calendar in a nifty, Sinatra-powered events page.
+## Installation
 
-![Sinatra GCal example](http://i.imgur.com/odgyR.png)
+Add this line to your application's Gemfile:
 
-See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
+    gem 'almanac'
 
-Event descriptions can be formatted in [Markdown](http://daringfireball.net/projects/markdown/basics).
+And then execute:
 
-## Setting up a Sinatra GCal site
+    $ bundle
 
-Sinatra GCal is designed to work out-of-the box on a single [Heroku](http://heroku.com/) dyno, effectively making it free to host.
+Or install it yourself as:
 
-With the [Heroku toolbelt](https://toolbelt.heroku.com/) installed, you can get up-and-running-with:
+    $ gem install almanac
 
-    heroku create --stack cedar
-    heroku config:add GCAL_CALENDAR_ID=your-calendar-id@group.calendar.google.com
-    heroku config:add TIMEZONE="Pacific/Auckland"
-    git push heroku master
-    heroku open
+## Usage
 
-The two settings you must have are the `GCAL_CALENDAR_ID` and the `TIMEZONE`.
+TODO: Write usage instructions here
 
-The `GCAL_CALENDAR ID` you can find on the Calendar Settings page:
+## Contributing
 
-![Choose "Calendar Settings" from the calendar options disclosure arrow](http://i.imgur.com/evQI5IX.png)
-
-![Locate the Calendar ID](http://i.imgur.com/UN7d77t.png)
-
-A list of available timezones can be found at https://gist.github.com/4654510
-
-## Available settings
-
-Options can be set via environment variables.
-
-* `GCAL_CALENDAR_ID` -- Mandatory, the Google Calendar ID (see above)
-* `TIMEZONE` -- Mandatory, the timezone in which to display the calendar
-* `DAYS_LOOKAHEAD` -- Optional, how many days ahead to show (default is 30)
-* `ALLOW_HTML` -- Optional, whether to allow HTML in event descriptions (default is false)
-* `TWITTER` --- Add a link to a Twitter account at the bottom of the page
-
-## Developing locally
-
-Sinatra GCal is written in [Ruby](http://ruby-lang.org) (Ruby 1.9.3 recommended).
-
-With [Bundler](http://gembundler.com) installed:
-
-    bundle install
-
-Ruby with `ruby server.rb`. If you want to reload the server each request (useful for development), install [Shotgun](http://rubygems.org/gems/shotgun) and run `shotgun server.rb`.
-
-## Laundry list
-
-Still to-do:
-
-* Caching support (currently fetches the calendar every time a request is made)
-* Tidy up the request code
+1. Fork it ( http://github.com/<my-github-username>/almanac/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
