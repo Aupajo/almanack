@@ -1,13 +1,6 @@
 require 'spec_helper'
-require 'rack/test'
 
-describe "Viewing a calendar" do
-  include Rack::Test::Methods
-
-  def app
-    Almanac::Server
-  end
-
+describe "Viewing a calendar", :feature do
   it "displays all upcoming events" do
     Almanac::EVENTS = [
       { title: "Hogswatch" },
