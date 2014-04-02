@@ -2,11 +2,13 @@ PATH
   remote: .
   specs:
     almanac (1.0.0.alpha)
+      rack
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    rack (1.5.2)
     rake (10.2.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
