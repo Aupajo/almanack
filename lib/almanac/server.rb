@@ -4,7 +4,7 @@ module Almanac
     set :root, Pathname(settings.root).join('themes', settings.theme)
 
     get "/" do
-      @events = Almanac::EVENTS
+      @events = Almanac.events
       erb :events
     end
   end

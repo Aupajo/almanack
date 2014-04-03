@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe "Viewing a calendar", :feature do
+  before { Almanac.reset! }
+
   it "displays all upcoming events" do
-    Almanac::EVENTS = [
+    Almanac.config.add_events [
       { title: "Hogswatch" },
       { title: "Soul Cake Tuesday" },
       { title: "Eve of Small Gods" },
@@ -10,10 +12,24 @@ describe "Viewing a calendar", :feature do
 
     get "/"
 
-    expect(last_response.errors).to be_empty
-    expect(last_response.status).to eql(200)
-    expect(last_response.body).to include("Hogswatch")
-    expect(last_response.body).to include("Soul Cake Tuesday")
-    expect(last_response.body).to include("Eve of Small Gods")
+    expect(last_response).to have_event("Hogswatch")
+    expect(last_response).to have_event("Soul Cake Tuesday")
+    expect(last_response).to have_event("Eve of Small Gods")
+  end
+
+  it "displays events from an iCal feed" do
+    Almanac.config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
+    
+    Timecop.freeze(2014, 4, 3) do
+      VCR.use_cassette('google_calendar') do
+        get "/"
+      end
+    end
+
+    expect(last_response).to have_event("Ruby Meetup @catalyst - Tanks! Guns!")
+    expect(last_response).to have_event("The Foundation")
+    expect(last_response).to have_event("WikiHouse/NZ weekly meet-up")
+    expect(last_response).to have_event("Christchurch Python Meetup")
+    expect(last_response).to have_event("Coffee & Jam")
   end
 end
