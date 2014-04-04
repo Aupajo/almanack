@@ -3,6 +3,7 @@ require "sinatra"
 require "almanac/version"
 require "almanac/server"
 require "almanac/configuration"
+require "almanac/ical_feed"
 
 module Almanac
   def self.config

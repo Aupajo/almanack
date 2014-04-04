@@ -14,7 +14,7 @@ module Almanac
     end
 
     def add_ical_feed(url)
-      @ical_feeds << url
+      @ical_feeds << IcalFeed.new(url)
     end
 
     def add_events(events)
@@ -25,25 +25,11 @@ module Almanac
       days_lookahead = 30
       from_date = DateTime.now
       to_date = DateTime.now + days_lookahead
+      
       occurrences = []
-
-      @ical_feeds.each do |feed_url|
-        url = URI(feed_url)
-        body = Net::HTTP.get(url)
-        ical_entities = RiCal.parse_string(body)
-
-        ical_entities.each do |entity|
-          if entity.respond_to?(:events)
-            occurrences << entity.events.map do |event|
-              event.occurrences(starting: from_date, before: to_date).map do |occurrence|
-                { title: occurrence.summary }
-              end
-            end
-          end
-        end
-      end
-
-      (@simple_events + occurrences).flatten
+      occurrences << @ical_feeds.map { |feed| feed.events_between(from_date, to_date) }
+      occurrences << @simple_events
+      occurrences.flatten
     end
   end
 end
