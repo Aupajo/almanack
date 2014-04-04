@@ -5,6 +5,7 @@ require "almanac/server"
 require "almanac/configuration"
 require "almanac/event_source"
 require "almanac/ical_feed"
+require "almanac/event"
 
 module Almanac
   def self.config
