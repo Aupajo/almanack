@@ -1,11 +1,13 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
-
 require 'almanac'
 require 'webmock/rspec'
 require 'vcr'
 require 'timecop'
 require 'nokogiri'
+require 'codeclimate-test-reporter'
+
+CodeClimate::TestReporter.start if ENV['CODECLIMATE_REPO_TOKEN']
+
+Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 
 RSpec.configure do |config|
   # Will be the default in RSpec 3

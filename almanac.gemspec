@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "codeclimate-test-reporter"
 end
