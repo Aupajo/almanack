@@ -19,10 +19,10 @@ module Almanac
           end
         end
 
-        titles = events.map { |e| e[:title] }
+        unique_titles = events.map(&:title).uniq.sort
 
         expect(events.length).to eq(15)
-        expect(titles.uniq.sort).to eq([
+        expect(unique_titles).to eq([
           "Christchurch Python Meetup",
           "Coffee & Jam",
           "Ruby Meetup @catalyst - Tanks! Guns!",
