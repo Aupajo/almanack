@@ -6,7 +6,7 @@ module Almanac
       IcalFeed.new("http://example.org/ical.ics")
     end
 
-    describe "#events" do
+    describe "#events_between" do
       it "returns a list of events" do
         feed = IcalFeed.new('https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics')
         events = nil
@@ -15,7 +15,7 @@ module Almanac
           VCR.use_cassette('google_calendar') do
             from = DateTime.now
             to = from + 30
-            events = feed.events_between(from, to)
+            events = feed.events_between(from..to)
           end
         end
 
@@ -31,5 +31,6 @@ module Almanac
         ])
       end
     end
+
   end
 end

@@ -9,7 +9,10 @@ module Almanac
       @url = url
     end
 
-    def events_between(from_date, to_date)
+    def events_between(date_range)
+      to_date = date_range.max
+      from_date = date_range.min
+
       occurrences = []
 
       entities.each do |entity|

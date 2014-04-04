@@ -27,7 +27,7 @@ module Almanac
       to_date = DateTime.now + days_lookahead
       
       occurrences = []
-      occurrences << @ical_feeds.map { |feed| feed.events_between(from_date, to_date) }
+      occurrences << @ical_feeds.map { |feed| feed.events_between(from_date..to_date) }
       occurrences << @simple_events
       occurrences.flatten
     end
