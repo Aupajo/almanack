@@ -9,7 +9,7 @@ desc 'Run a dummy server'
 task :server do
   require "almanac"
 
-  Almanac::EVENTS = [
+  Almanac.config.add_events [
     { title: "Hogswatch" },
     { title: "Soul Cake Tuesday" },
     { title: "Eve of Small Gods" },
