@@ -15,6 +15,7 @@ RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.include ServerSupport, :feature
+  config.include EventMatchers
 end
 
 VCR.configure do |config|

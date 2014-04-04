@@ -12,9 +12,9 @@ describe "Viewing a calendar", :feature do
 
     get "/"
 
-    expect(last_response).to have_event("Hogswatch")
-    expect(last_response).to have_event("Soul Cake Tuesday")
-    expect(last_response).to have_event("Eve of Small Gods")
+    expect(last_response).to have_event_on_page("Hogswatch")
+    expect(last_response).to have_event_on_page("Soul Cake Tuesday")
+    expect(last_response).to have_event_on_page("Eve of Small Gods")
   end
 
   it "displays events from an iCal feed" do
@@ -26,10 +26,10 @@ describe "Viewing a calendar", :feature do
       end
     end
 
-    expect(last_response).to have_event("Ruby Meetup @catalyst - Tanks! Guns!")
-    expect(last_response).to have_event("The Foundation")
-    expect(last_response).to have_event("WikiHouse/NZ weekly meet-up")
-    expect(last_response).to have_event("Christchurch Python Meetup")
-    expect(last_response).to have_event("Coffee & Jam")
+    expect(last_response).to have_event_on_page("Ruby Meetup @catalyst - Tanks! Guns!")
+    expect(last_response).to have_event_on_page("The Foundation")
+    expect(last_response).to have_event_on_page("WikiHouse/NZ weekly meet-up")
+    expect(last_response).to have_event_on_page("Christchurch Python Meetup")
+    expect(last_response).to have_event_on_page("Coffee & Jam")
   end
 end
