@@ -1,7 +1,8 @@
 <div class="events">
   <% @events.each do |event| %>
     <div class="event">
-      <%= event.title %>
+      <h2 class="title"><%= event.title %></h2>
+      (<%= event.start_date %>)
     </div>
   <% end %>
 </div>
