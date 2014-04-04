@@ -39,7 +39,13 @@ module Almanac
     end
 
     def event_from(occurrence)
-      Event.new(title: occurrence.summary)
+      Event.new(
+        title: occurrence.summary,
+        start_date: occurrence.dtstart,
+        end_date: occurrence.dtend,
+        description: occurrence.description,
+        location: occurrence.location
+      )
     end
 
     def entities
