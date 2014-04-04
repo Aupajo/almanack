@@ -9,16 +9,15 @@ module Almanac
     end
 
     def reset!
-      @simple_events = []
-      @ical_feeds = []
+      @event_sources = []
     end
 
     def add_ical_feed(url)
-      @ical_feeds << IcalFeed.new(url)
+      @event_sources << IcalFeed.new(url)
     end
 
     def add_events(events)
-      @simple_events << events
+      @event_sources << EventSource.new(events)
     end
 
     def events  
@@ -26,10 +25,9 @@ module Almanac
       from_date = DateTime.now
       to_date = DateTime.now + days_lookahead
       
-      occurrences = []
-      occurrences << @ical_feeds.map { |feed| feed.events_between(from_date..to_date) }
-      occurrences << @simple_events
-      occurrences.flatten
+      @event_sources.map do |event_source|
+        event_source.events_between(from_date..to_date)
+      end.flatten
     end
   end
 end
