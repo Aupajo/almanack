@@ -5,7 +5,7 @@ module Almanac
     end
 
     def events_between(date_range)
-      @events
+      @events.map { |attrs| Event.new(attrs) }
     end
   end
 end

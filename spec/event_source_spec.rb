@@ -18,10 +18,11 @@ module Almanac
         from = DateTime.now
         to = from + 30
 
-        expect(source.events_between(from..to)).to eq([
-          { title: "Soul Cake Tuesday" },
-          { title: "Hogswatch" }
-        ])
+        events = source.events_between(from..to)
+
+        expect(events).to have(2).events
+        expect(events.first.title).to eq("Soul Cake Tuesday")
+        expect(events.last.title).to eq("Hogswatch")
       end
     end
   end

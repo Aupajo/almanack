@@ -12,9 +12,8 @@ module Almanac
             { title: "Hogswatch" }
           ]
 
-          expect(config.events).to eq([
-            { title: "Hogswatch" }
-          ])
+          expect(config.events).to have(1).event
+          expect(config.events.first.title).to eq('Hogswatch')
         end
       end
 
@@ -33,7 +32,7 @@ module Almanac
 
           titles = events.map { |e| e[:title] }
 
-          expect(events.length).to eq(15)
+          expect(events).to have(15).events
           expect(titles.uniq.sort).to eq([
             "Christchurch Python Meetup",
             "Coffee & Jam",
