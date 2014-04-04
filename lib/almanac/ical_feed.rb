@@ -31,7 +31,7 @@ module Almanac
     private
 
     def event_from(occurrence)
-      { title: occurrence.summary }
+      Event.new(title: occurrence.summary)
     end
 
     def entities
