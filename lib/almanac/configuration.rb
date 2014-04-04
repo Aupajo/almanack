@@ -27,7 +27,7 @@ module Almanac
       
       @event_sources.map do |event_source|
         event_source.events_between(from_date..to_date)
-      end.flatten
+      end.flatten.sort_by(&:start_date)
     end
   end
 end

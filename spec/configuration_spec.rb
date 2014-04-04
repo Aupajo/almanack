@@ -30,16 +30,9 @@ module Almanac
             end
           end
 
-          unique_titles = events.map(&:title).uniq.sort
-
           expect(events).to have(15).events
-          expect(unique_titles).to eq([
-            "Christchurch Python Meetup",
-            "Coffee & Jam",
-            "Ruby Meetup @catalyst - Tanks! Guns!",
-            "The Foundation",
-            "WikiHouse/NZ weekly meet-up"
-          ])
+          expect(events).to all_have_properties(:title, :start_date)
+          expect(events).to be_in_order
         end
       end
     end
