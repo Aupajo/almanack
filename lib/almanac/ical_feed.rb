@@ -10,25 +10,33 @@ module Almanac
     end
 
     def events_between(date_range)
+      occurrences_between(date_range).map do |occurrence|
+        event_from(occurrence)
+      end
+    end
+
+    private
+
+    def each_ical_event(&block)
+      entities.each do |entity|
+        entity.events.each(&block) if entity.respond_to?(:events)
+      end
+    end
+
+    def occurrences_between(date_range)
       to_date = date_range.max
       from_date = date_range.min
 
       occurrences = []
 
-      entities.each do |entity|
-        if entity.respond_to?(:events)
-          occurrences << entity.events.map do |event|
-            event.occurrences(starting: from_date, before: to_date).map do |occurrence|
-              event_from(occurrence)
-            end
-          end
+      each_ical_event do |ical_event|
+        ical_event.occurrences(starting: from_date, before: to_date).each do |occurrence|
+          occurrences << occurrence
         end
       end
 
-      occurrences.flatten
+      occurrences
     end
-
-    private
 
     def event_from(occurrence)
       Event.new(title: occurrence.summary)
