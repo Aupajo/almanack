@@ -5,4 +5,4 @@ rvm:
 addons:
   code_climate:
     repo_token:
-      secure: "DoTUV4wNoKThpdraNORVTF3u7XrvNhYyUaGiLsTPrNz+7JmDCDtoCT8ePzBPKXa9Zyc3cSTpVVhkprWTjoJ16voPzuDUTKwdO2id5FRi+C9p+dPgKT5HMZ6u+HAUEDUae4LqFWNd9uiVt23KCP1DJ2oM6IE9bhwyc41VMZoEVBM="
+      secure: "VmXcnoFkthPYiEdyMTgqopGNUirpoZ3/wRych2xm+k8g9yW3IVbnEsK0lLg7InlyUhM3r7IxC4NBTRa33MhkpuCtvQGFpUjt56lhDvLcb0OBLOnpReKpo8VWW/cy0okpiW8LNt488M67WH+Wnlx//Fpkop9/HNM1vTLjysISk/Q="
