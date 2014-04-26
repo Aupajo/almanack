@@ -12,6 +12,7 @@ require 'rdiscount'
 configure do
   set :allow_html, (ENV['ALLOW_HTML'] || false)
   set :twitter, ENV['TWITTER']
+  set :google_analytics, ENV['GOOGLE_ANALYTICS']
 end
 
 class Calendar
