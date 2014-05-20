@@ -1,16 +1,10 @@
 require 'spec_helper'
 
 module Almanac
-  describe EventSource do
-    it "accepts an array of events" do
-      EventSource.new [
-          { title: "Soul Cake Tuesday" }
-      ]
-    end
-
+  describe SimpleEventCollection do
     describe "#events_between" do
       it "returns events between two dates" do
-        source = EventSource.new [
+        basic_events = SimpleEventCollection.new [
           { title: "Soul Cake Tuesday" },
           { title: "Hogswatch" }
         ]
@@ -18,7 +12,7 @@ module Almanac
         from = DateTime.now
         to = from + 30
 
-        events = source.events_between(from..to)
+        events = basic_events.events_between(from..to)
 
         expect(events).to have(2).events
         expect(events.first.title).to eq("Soul Cake Tuesday")

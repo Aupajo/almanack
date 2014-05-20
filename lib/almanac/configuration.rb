@@ -3,7 +3,9 @@ require 'uri'
 require 'ri_cal'
 
 module Almanac
-  class Configuration    
+  class Configuration
+    attr_reader :event_sources
+
     def initialize
       reset!
     end
@@ -17,17 +19,7 @@ module Almanac
     end
 
     def add_events(events)
-      @event_sources << EventSource.new(events)
-    end
-
-    def events  
-      days_lookahead = 30
-      from_date = DateTime.now
-      to_date = DateTime.now + days_lookahead
-      
-      @event_sources.map do |event_source|
-        event_source.events_between(from_date..to_date)
-      end.flatten.sort_by(&:start_date)
+      @event_sources << SimpleEventCollection.new(events)
     end
   end
 end

@@ -4,7 +4,6 @@ require 'ri_cal'
 
 module Almanac
   class IcalFeed
-
     def initialize(url)
       @url = url
     end

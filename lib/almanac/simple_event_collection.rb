@@ -1,5 +1,5 @@
 module Almanac
-  class EventSource
+  class SimpleEventCollection
     def initialize(events)
       @events = events
     end

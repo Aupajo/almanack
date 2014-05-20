@@ -1,9 +1,9 @@
 require "pathname"
-require "sinatra"
 require "almanac/version"
 require "almanac/server"
 require "almanac/configuration"
-require "almanac/event_source"
+require "almanac/calendar"
+require "almanac/simple_event_collection"
 require "almanac/ical_feed"
 require "almanac/event"
 
@@ -12,8 +12,8 @@ module Almanac
     @config ||= Configuration.new
   end
 
-  def self.events
-    config.events
+  def self.calendar
+    @calendar ||= Calendar.new(config)
   end
 
   def self.reset!
