@@ -4,7 +4,7 @@ module Almanac
   describe Configuration do
 
     describe "#add_events" do
-      it "adds events to the event sources" do
+      it "adds a simple event collection event source" do
         config = Configuration.new
         expect(config.event_sources).to have(0).sources
 
@@ -15,8 +15,10 @@ module Almanac
         expect(config.event_sources).to have(1).source
         expect(config.event_sources.first).to be_an_instance_of(SimpleEventCollection)
       end
-  
-      it "returns the event occurrences" do
+    end
+
+    describe "#ical_feed" do
+      it "adds an iCal feed event source" do
         config = Configuration.new
         expect(config.event_sources).to have(0).sources
 
@@ -24,6 +26,18 @@ module Almanac
         
         expect(config.event_sources).to have(1).source
         expect(config.event_sources.first).to be_an_instance_of(IcalFeed)
+      end
+    end
+
+    describe "#meetup_group" do
+      it "adds a Meetup group event source" do
+        config = Configuration.new
+        expect(config.event_sources).to have(0).sources
+
+        config.add_meetup_group(group_urlname: "CHC-JS", key: "secrettoken")
+        
+        expect(config.event_sources).to have(1).source
+        expect(config.event_sources.first).to be_an_instance_of(MeetupGroup)
       end
     end
 

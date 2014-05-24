@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "sinatra"
   spec.add_dependency "ri_cal"
+  spec.add_dependency "addressable"
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"

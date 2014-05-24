@@ -21,5 +21,9 @@ module Almanac
     def add_events(events)
       @event_sources << SimpleEventCollection.new(events)
     end
+
+    def add_meetup_group(options)
+      @event_sources << MeetupGroup.new(options)
+    end
   end
 end

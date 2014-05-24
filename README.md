@@ -24,6 +24,10 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+### Meetup.com
+
+You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key).
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/almanac/fork )

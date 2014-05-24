@@ -4,6 +4,7 @@ require "almanac/server"
 require "almanac/configuration"
 require "almanac/calendar"
 require "almanac/simple_event_collection"
+require "almanac/meetup_group"
 require "almanac/ical_feed"
 require "almanac/event"
 

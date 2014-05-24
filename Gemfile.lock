@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     almanac (1.0.0.alpha)
+      addressable
       ri_cal
       sinatra
 
