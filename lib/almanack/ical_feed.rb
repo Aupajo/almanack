@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'ri_cal'
 
-module Almanac
+module Almanack
   class IcalFeed
     def initialize(url)
       @url = url

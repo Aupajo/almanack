@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Almanac
+module Almanack
   describe SimpleEventCollection do
     describe "#events_between" do
       it "returns events between two dates" do

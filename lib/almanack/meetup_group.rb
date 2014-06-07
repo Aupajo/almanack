@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'addressable/uri'
 
-module Almanac
+module Almanack
   class MeetupGroup
     def initialize(options = {})
       @request_options = options

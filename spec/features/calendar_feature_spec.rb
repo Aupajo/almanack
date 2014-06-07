@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe "Viewing a calendar", :feature do
-  before { Almanac.reset! }
+  before { Almanack.reset! }
 
   it "displays all upcoming events" do
-    Almanac.config.add_events [
+    Almanack.config.add_events [
       { title: "Hogswatch" },
       { title: "Soul Cake Tuesday" },
       { title: "Eve of Small Gods" },
@@ -18,7 +18,7 @@ describe "Viewing a calendar", :feature do
   end
 
   it "displays events from an iCal feed" do
-    Almanac.config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
+    Almanack.config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
     
     Timecop.freeze(2014, 4, 3) do
       VCR.use_cassette('google_calendar') do

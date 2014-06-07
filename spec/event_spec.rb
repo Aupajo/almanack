@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Almanac
+module Almanack
   describe Event do
 
     it "has a title" do

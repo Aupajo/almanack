@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Almanac
+module Almanack
   describe MeetupGroup do
     describe "#events_between" do
       it "returns a list of events" do

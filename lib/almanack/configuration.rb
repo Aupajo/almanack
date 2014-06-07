@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'ri_cal'
 
-module Almanac
+module Almanack
   class Configuration
     attr_reader :event_sources
 

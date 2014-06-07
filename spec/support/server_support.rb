@@ -4,6 +4,6 @@ module ServerSupport
   include Rack::Test::Methods
 
   def app
-    Almanac::Server
+    Almanack::Server
   end
 end

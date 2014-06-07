@@ -6,7 +6,7 @@ require 'codeclimate-test-reporter'
 
 CodeClimate::TestReporter.start if ENV['CODECLIMATE_REPO_TOKEN']
 
-require 'almanac'
+require 'almanack'
 
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 

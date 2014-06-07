@@ -7,15 +7,15 @@ task :default => :spec
 
 desc 'Run a dummy server'
 task :server do
-  require "almanac"
+  require "almanack"
 
   today = DateTime.now
 
-  Almanac.config.add_events [
+  Almanack.config.add_events [
     { title: "Hogswatch", start_date: today },
     { title: "Soul Cake Tuesday", start_date: today + 10 },
     { title: "Eve of Small Gods", start_date: today + 30 },
   ]
 
-  Rack::Handler::WEBrick.run(Almanac::Server)
+  Rack::Handler::WEBrick.run(Almanack::Server)
 end

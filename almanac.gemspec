@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'almanac/version'
+require 'almanack/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "almanac"
-  spec.version       = Almanac::VERSION
+  spec.name          = "almanack"
+  spec.version       = Almanack::VERSION
   spec.authors       = ["Pete Nicholls"]
   spec.email         = ["pete@metanation.com"]
   spec.summary       = %q{Combined events calendar for Google Calendar, iCal, Meetup.com and friends.}

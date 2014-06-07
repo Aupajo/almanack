@@ -1,4 +1,4 @@
-module Almanac
+module Almanack
   class Calendar
     def initialize(config)
       @config = config

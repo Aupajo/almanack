@@ -1,4 +1,4 @@
-# Almanac
+# Almanack
 
 [![Build Status](https://travis-ci.org/Aupajo/sinatra-gcal.svg)](https://travis-ci.org/Aupajo/sinatra-gcal)
 [![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
@@ -10,7 +10,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'almanac'
+    gem 'almanack'
 
 And then execute:
 
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install almanac
+    $ gem install almanack
 
 ## Usage
 
@@ -30,7 +30,7 @@ You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key).
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/almanac/fork )
+1. Fork it ( http://github.com/Aupajo/sinatra-gcal/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

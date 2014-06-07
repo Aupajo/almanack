@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Almanac
+module Almanack
   describe Configuration do
 
     describe "#add_events" do

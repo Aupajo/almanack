@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Almanac
+module Almanack
   describe IcalFeed do
     it "accepts a URL" do
       IcalFeed.new("http://example.org/ical.ics")

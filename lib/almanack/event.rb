@@ -1,6 +1,6 @@
 require 'ostruct'
 
-module Almanac
+module Almanack
   class Event < OpenStruct
   end
 end

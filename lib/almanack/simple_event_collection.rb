@@ -1,4 +1,4 @@
-module Almanac
+module Almanack
   class SimpleEventCollection
     def initialize(events)
       @events = events
