@@ -1,0 +1,8 @@
+<div class="events">
+  <% @calendar.events.each do |event| %>
+    <div class="event">
+      <h2 class="title"><%= event.title %></h2>
+      (<%= event.start_date %>)
+    </div>
+  <% end %>
+</div>

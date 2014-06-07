@@ -1,0 +1,8 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.1
+addons:
+  code_climate:
+    repo_token:
+      secure: "VmXcnoFkthPYiEdyMTgqopGNUirpoZ3/wRych2xm+k8g9yW3IVbnEsK0lLg7InlyUhM3r7IxC4NBTRa33MhkpuCtvQGFpUjt56lhDvLcb0OBLOnpReKpo8VWW/cy0okpiW8LNt488M67WH+Wnlx//Fpkop9/HNM1vTLjysISk/Q="

@@ -1,62 +1,37 @@
-# Sinatra GCal
+# Almanac
 
-[![Dependency
-Status](https://gemnasium.com/Aupajo/sinatra-gcal.png)](https://gemnasium.com/Aupajo/sinatra-gcal)
+[![Build Status](https://travis-ci.org/Aupajo/sinatra-gcal.svg)](https://travis-ci.org/Aupajo/sinatra-gcal)
+[![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
+[![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal/coverage.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
 
-Show off your Google Calendar in a nifty, Sinatra-powered events page.
+TODO: Write a gem description
 
-![Sinatra GCal example](http://i.imgur.com/odgyR.png)
+## Installation
 
-See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
+Add this line to your application's Gemfile:
 
-Event descriptions can be formatted in [Markdown](http://daringfireball.net/projects/markdown/basics).
+    gem 'almanac'
 
-## Setting up a Sinatra GCal site
+And then execute:
 
-Sinatra GCal is designed to work out-of-the box on a single [Heroku](http://heroku.com/) dyno, effectively making it free to host.
+    $ bundle
 
-With the [Heroku toolbelt](https://toolbelt.heroku.com/) installed, you can get up-and-running-with:
+Or install it yourself as:
 
-    heroku create --stack cedar
-    heroku config:add GCAL_CALENDAR_ID=your-calendar-id@group.calendar.google.com
-    heroku config:add TIMEZONE="Pacific/Auckland"
-    git push heroku master
-    heroku open
+    $ gem install almanac
 
-The two settings you must have are the `GCAL_CALENDAR_ID` and the `TIMEZONE`.
+## Usage
 
-The `GCAL_CALENDAR ID` you can find on the Calendar Settings page:
+TODO: Write usage instructions here
 
-![Choose "Calendar Settings" from the calendar options disclosure arrow](http://i.imgur.com/evQI5IX.png)
+### Meetup.com
 
-![Locate the Calendar ID](http://i.imgur.com/UN7d77t.png)
+You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key).
 
-A list of available timezones can be found at https://gist.github.com/4654510
+## Contributing
 
-## Available settings
-
-Options can be set via environment variables.
-
-* `GCAL_CALENDAR_ID` -- Mandatory, the Google Calendar ID (see above)
-* `TIMEZONE` -- Mandatory, the timezone in which to display the calendar
-* `DAYS_LOOKAHEAD` -- Optional, how many days ahead to show (default is 30)
-* `ALLOW_HTML` -- Optional, whether to allow HTML in event descriptions (default is false)
-* `TWITTER` --- Optional, add a link to a Twitter account at the bottom of the page
-* `GOOGLE_ANALYTICS` --- Optional, specify a tracking ID
-
-## Developing locally
-
-Sinatra GCal is written in [Ruby](http://ruby-lang.org) (Ruby 1.9.3 recommended).
-
-With [Bundler](http://gembundler.com) installed:
-
-    bundle install
-
-Ruby with `ruby server.rb`. If you want to reload the server each request (useful for development), install [Shotgun](http://rubygems.org/gems/shotgun) and run `shotgun server.rb`.
-
-## Laundry list
-
-Still to-do:
-
-* Caching support (currently fetches the calendar every time a request is made)
-* Tidy up the request code
+1. Fork it ( http://github.com/<my-github-username>/almanac/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
