@@ -14,7 +14,7 @@ module Almanac
 
         events = basic_events.events_between(from..to)
 
-        expect(events).to have(2).events
+        expect(events.size).to eq(2)
         expect(events.first.title).to eq("Soul Cake Tuesday")
         expect(events.last.title).to eq("Hogswatch")
       end

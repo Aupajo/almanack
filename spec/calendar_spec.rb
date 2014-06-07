@@ -13,7 +13,7 @@ module Almanac
 
           calendar = Calendar.new(config)
 
-          expect(calendar.events).to have(1).event
+          expect(calendar.events.size).to eq(1)
           expect(calendar.events.first.title).to eq('Hogswatch')
         end
       end
@@ -33,7 +33,7 @@ module Almanac
             end
           end
 
-          expect(events).to have(15).events
+          expect(events.size).to eq(15)
           expect(events).to all_have_properties(:title, :start_date)
           expect(events).to be_in_order
         end

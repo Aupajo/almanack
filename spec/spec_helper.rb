@@ -11,9 +11,6 @@ require 'almanac'
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 
 RSpec.configure do |config|
-  # Will be the default in RSpec 3
-  config.treat_symbols_as_metadata_keys_with_true_values = true
-
   config.include ServerSupport, :feature
   config.include EventMatchers
 end

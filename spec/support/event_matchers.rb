@@ -10,7 +10,7 @@ module EventMatchers
       end
     end
 
-    failure_message_for_should do |events|
+    failure_message do |events|
       "expected to see an event with #{attrs.inspect}, saw #{events.inspect}"
     end
   end
@@ -22,7 +22,7 @@ module EventMatchers
       end
     end
 
-    failure_message_for_should do |events|
+    failure_message do |events|
       "expected to all events to have properites #{properties.inspect}"
     end
   end
@@ -32,7 +32,7 @@ module EventMatchers
       events == events.sort_by(&:start_date)
     end
 
-    failure_message_for_should do |events|
+    failure_message do |events|
       "expected to events to be in order"
     end
   end
@@ -47,7 +47,7 @@ module EventMatchers
       @titles.any? { |t| t == title.strip }
     end
 
-    failure_message_for_should do |response|
+    failure_message do |response|
       "expected to see an event named #{title.inspect}, got #@titles"
     end
   end
