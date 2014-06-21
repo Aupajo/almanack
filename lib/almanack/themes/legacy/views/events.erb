@@ -1,0 +1,13 @@
+<div class="events">
+  <% @calendar.events.each do |event| %>
+    <div class="event">
+      <div class="date">
+        <div class="month"><%= event.start_date.strftime('%a') %></div>
+        <div class="day"><%= event.start_date.strftime('%d') %></div>
+      </div>
+      <div class="details">
+        <h3><%= event.title %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>

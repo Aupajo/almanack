@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Almanack
   describe Calendar do
-    
+
     describe "#events" do
       describe "with simple events" do
         it "returns the events" do
