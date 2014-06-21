@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "sinatra"
+  spec.add_dependency "sinatra-contrib"
   spec.add_dependency "ri_cal"
   spec.add_dependency "addressable"
 
