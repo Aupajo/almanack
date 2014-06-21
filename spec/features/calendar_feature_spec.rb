@@ -4,10 +4,12 @@ describe "Viewing a calendar", :feature do
   before { Almanack.reset! }
 
   it "displays all upcoming events" do
+    today = DateTime.now
+
     Almanack.config.add_events [
-      { title: "Hogswatch" },
-      { title: "Soul Cake Tuesday" },
-      { title: "Eve of Small Gods" },
+      { title: "Hogswatch", start_date: today },
+      { title: "Soul Cake Tuesday", start_date: today + 10 },
+      { title: "Eve of Small Gods", start_date: today + 30 },
     ]
 
     get "/"
