@@ -40,5 +40,9 @@ module Almanack
       end
     end
 
+    it "has a 30 day lookahead" do
+      expect(Calendar.new(double).days_lookahead).to eq(30)
+    end
+
   end
 end
