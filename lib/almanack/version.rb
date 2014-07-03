@@ -1,3 +1,4 @@
 module Almanack
-  VERSION = "0.0.1.alpha3"
+  CODENAME = "Garlick"
+  VERSION = "1.0.0.alpha"
 end
