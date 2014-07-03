@@ -1,6 +1,5 @@
 require "pathname"
 require "almanack/version"
-require "almanack/server"
 require "almanack/configuration"
 require "almanack/calendar"
 require "almanack/simple_event_collection"

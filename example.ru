@@ -1,6 +1,5 @@
 require "bundler/setup"
-require "rack/reloader"
-require "almanack"
+require "almanack/server"
 
 today = DateTime.now
 

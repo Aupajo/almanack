@@ -1,4 +1,5 @@
 require 'rack/test'
+require 'almanack/server'
 
 module ServerSupport
   include Rack::Test::Methods

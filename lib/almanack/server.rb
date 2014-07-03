@@ -1,4 +1,5 @@
 require "sinatra"
+require "almanack"
 
 module Almanack
   class Server < Sinatra::Base
