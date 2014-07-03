@@ -9,15 +9,19 @@ require "almanack/ical_feed"
 require "almanack/event"
 
 module Almanack
-  def self.config
-    @config ||= Configuration.new
-  end
+  class << self
+    def config(&block)
+      @config ||= Configuration.new
+      yield @config if block_given?
+      @config
+    end
 
-  def self.calendar
-    @calendar ||= Calendar.new(config)
-  end
+    def calendar
+      @calendar ||= Calendar.new(config)
+    end
 
-  def self.reset!
-    config.reset!
+    def reset!
+      config.reset!
+    end
   end
 end
