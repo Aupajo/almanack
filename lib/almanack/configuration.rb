@@ -4,14 +4,17 @@ require 'ri_cal'
 
 module Almanack
   class Configuration
+    DEFAULT_THEME = "legacy"
+
     attr_reader :event_sources
-    attr_accessor :title
+    attr_accessor :title, :theme
 
     def initialize
       reset!
     end
 
     def reset!
+      @theme = DEFAULT_THEME
       @event_sources = []
     end
 

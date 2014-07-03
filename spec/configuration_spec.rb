@@ -11,6 +11,14 @@ module Almanack
       end
     end
 
+    describe "#theme" do
+      it "can be set and accessed" do
+        config = Configuration.new
+        config.theme = "custom"
+        expect(config.theme).to eq("custom")
+      end
+    end
+
     describe "#add_events" do
       it "adds a simple event collection event source" do
         config = Configuration.new
