@@ -19,6 +19,14 @@ module Almanack
       end
     end
 
+    describe "#theme_root" do
+      specify "it raises an error if no theme can be found" do
+        config = Configuration.new
+        config.theme = "nonexistent"
+        expect { config.theme_root }.to raise_error(Configuration::ThemeNotFound)
+      end
+    end
+
     describe "#add_events" do
       it "adds a simple event collection event source" do
         config = Configuration.new

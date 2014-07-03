@@ -3,8 +3,7 @@ require "almanack"
 
 module Almanack
   class Server < Sinatra::Base
-    set :theme, Almanack.config.theme
-    set :root, Pathname(settings.root).join('themes', settings.theme)
+    set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
 
     get "/" do
