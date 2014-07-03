@@ -7,9 +7,22 @@
       </div>
       <div class="details">
         <h3 class="title"><%= event.title %></h3>
-        <div class="description">
-          <%= event.description %>
-        </div>
+
+        <% if event.description %>
+          <div class="description">
+            <%= event.description %>
+          </div>
+        <% end %>
+
+         <dl>
+           <% if event.location %>
+            <dt>Where</dt>
+            <dd><%= event.location %></dd>
+          <% end %>
+
+          <dt>When</dt>
+          <dd><%= event.start_date.strftime('%l:%M%P, %-d %b %Y') %></dd>
+        </dl>
       </div>
     </div>
   <% end %>
