@@ -1,4 +1,5 @@
 require "sinatra"
+require "sass"
 require "almanack"
 
 module Almanack
