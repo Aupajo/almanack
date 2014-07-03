@@ -13,7 +13,8 @@ module Almanack
     end
 
     get "/stylesheets/:name" do
-      sass :"stylesheets/#{params[:name]}"
+      # TODO make safe
+      sass :"../stylesheets/#{params[:name]}"
     end
   end
 end
