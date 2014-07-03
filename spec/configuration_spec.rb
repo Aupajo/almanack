@@ -3,6 +3,14 @@ require 'spec_helper'
 module Almanack
   describe Configuration do
 
+    describe "#title" do
+      it "can be set and accessed" do
+        config = Configuration.new
+        config.title = "Discworld Holidays"
+        expect(config.title).to eq("Discworld Holidays")
+      end
+    end
+
     describe "#add_events" do
       it "adds a simple event collection event source" do
         config = Configuration.new
@@ -23,7 +31,7 @@ module Almanack
         expect(config.event_sources.size).to eq(0)
 
         config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
-        
+
         expect(config.event_sources.size).to eq(1)
         expect(config.event_sources.first).to be_an_instance_of(IcalFeed)
       end
@@ -35,7 +43,7 @@ module Almanack
         expect(config.event_sources.size).to eq(0)
 
         config.add_meetup_group(group_urlname: "CHC-JS", key: "secrettoken")
-        
+
         expect(config.event_sources.size).to eq(1)
         expect(config.event_sources.first).to be_an_instance_of(MeetupGroup)
       end

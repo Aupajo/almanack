@@ -5,6 +5,7 @@ require 'ri_cal'
 module Almanack
   class Configuration
     attr_reader :event_sources
+    attr_accessor :title
 
     def initialize
       reset!

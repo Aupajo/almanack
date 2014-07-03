@@ -3,6 +3,15 @@ require 'spec_helper'
 module Almanack
   describe Calendar do
 
+    describe "#title" do
+      it "delegates to the config's title" do
+        config = Configuration.new
+        config.title = "Discworld Holidays"
+        calendar = Calendar.new(config)
+        expect(calendar.title).to eq("Discworld Holidays")
+      end
+    end
+
     describe "#events" do
       describe "with simple events" do
         it "returns the events" do

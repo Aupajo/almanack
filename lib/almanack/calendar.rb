@@ -1,11 +1,12 @@
+require 'forwardable'
+
 module Almanack
   class Calendar
+    extend Forwardable
+    def_delegators :@config, :event_sources, :title
+
     def initialize(config)
       @config = config
-    end
-
-    def event_sources
-      @config.event_sources
     end
 
     def events
