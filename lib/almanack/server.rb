@@ -4,6 +4,7 @@ module Almanack
   class Server < Sinatra::Base
     set :theme, 'legacy'
     set :root, Pathname(settings.root).join('themes', settings.theme)
+    set :protection, except: :frame_options
 
     get "/" do
       @calendar = Almanack.calendar

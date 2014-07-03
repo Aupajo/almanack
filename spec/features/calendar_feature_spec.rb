@@ -21,7 +21,7 @@ describe "Viewing a calendar", :feature do
 
   it "displays events from an iCal feed" do
     Almanack.config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
-    
+
     Timecop.freeze(2014, 4, 3) do
       VCR.use_cassette('google_calendar') do
         get "/"
@@ -33,5 +33,10 @@ describe "Viewing a calendar", :feature do
     expect(last_response).to have_event_on_page("WikiHouse/NZ weekly meet-up")
     expect(last_response).to have_event_on_page("Christchurch Python Meetup")
     expect(last_response).to have_event_on_page("Coffee & Jam")
+  end
+
+  it "allows being embedded in an iframe" do
+    get "/"
+    expect(last_response.headers).to_not have_key("X-Frame-Options")
   end
 end
