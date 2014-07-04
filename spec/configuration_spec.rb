@@ -37,7 +37,7 @@ module Almanack
         ]
 
         expect(config.event_sources.size).to eq(1)
-        expect(config.event_sources.first).to be_an_instance_of(SimpleEventCollection)
+        expect(config.event_sources.first).to be_an_instance_of(EventSource::Static)
       end
     end
 
@@ -49,7 +49,7 @@ module Almanack
         config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
 
         expect(config.event_sources.size).to eq(1)
-        expect(config.event_sources.first).to be_an_instance_of(IcalFeed)
+        expect(config.event_sources.first).to be_an_instance_of(EventSource::IcalFeed)
       end
     end
 
@@ -61,7 +61,7 @@ module Almanack
         config.add_meetup_group(group_urlname: "CHC-JS", key: "secrettoken")
 
         expect(config.event_sources.size).to eq(1)
-        expect(config.event_sources.first).to be_an_instance_of(MeetupGroup)
+        expect(config.event_sources.first).to be_an_instance_of(EventSource::MeetupGroup)
       end
     end
 

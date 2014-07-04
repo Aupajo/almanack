@@ -32,15 +32,15 @@ module Almanack
     end
 
     def add_ical_feed(url)
-      @event_sources << IcalFeed.new(url)
+      @event_sources << EventSource::IcalFeed.new(url)
     end
 
     def add_events(events)
-      @event_sources << SimpleEventCollection.new(events)
+      @event_sources << EventSource::Static.new(events)
     end
 
     def add_meetup_group(options)
-      @event_sources << MeetupGroup.new(options)
+      @event_sources << EventSource::MeetupGroup.new(options)
     end
   end
 end

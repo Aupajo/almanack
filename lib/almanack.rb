@@ -2,10 +2,10 @@ require "pathname"
 require "almanack/version"
 require "almanack/configuration"
 require "almanack/calendar"
-require "almanack/simple_event_collection"
-require "almanack/meetup_group"
-require "almanack/ical_feed"
 require "almanack/event"
+require "almanack/event_source/static"
+require "almanack/event_source/meetup_group"
+require "almanack/event_source/ical_feed"
 
 module Almanack
   class << self

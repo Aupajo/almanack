@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-module Almanack
-  describe SimpleEventCollection do
+module Almanack::EventSource
+  describe Static do
     describe "#events_between" do
       it "returns events between two dates" do
-        basic_events = SimpleEventCollection.new [
+        basic_events = Static.new [
           { title: "Soul Cake Tuesday" },
           { title: "Hogswatch" }
         ]
