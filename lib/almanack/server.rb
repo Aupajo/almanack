@@ -12,6 +12,11 @@ module Almanack
       erb :events
     end
 
+    get "/feed.ics" do
+      content_type "text/calendar"
+      Almanack.calendar.ical_feed
+    end
+
     get "/stylesheets/:name" do
       # TODO make safe
       sass :"../stylesheets/#{params[:name]}"

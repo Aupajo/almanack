@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Consolidated iCal feed" do
+describe "Consolidated iCal feed", :feature do
   let(:now) { Time.now }
   let(:parsed_feed) { RiCal.parse_string(Almanack.calendar.ical_feed) }
   let(:parsed_cal) { parsed_feed.first }
@@ -51,4 +51,10 @@ describe "Consolidated iCal feed" do
     expect(basic_event.dtend).to eq_time(three_hours_from_now)
   end
 
+  it "can be accessed from the server" do
+    allow(Almanack.calendar).to receive(:ical_feed) { "feed" }
+    get "/feed.ics"
+    expect(last_response.body).to eq("feed")
+    expect(last_response.headers["Content-Type"]).to include("text/calendar")
+  end
 end
