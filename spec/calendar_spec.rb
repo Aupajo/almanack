@@ -17,15 +17,15 @@ module Almanack
         config = Configuration.new
         calendar = Calendar.new(config)
 
-        now = DateTime.now
+        now = Time.now
         lookahead = 42
-        future = now + lookahead
+        future = now + lookahead * 24 * 60 * 60
 
         Timecop.freeze(now) do
           expect(calendar).to receive(:days_lookahead) { lookahead }
           expect(calendar).to receive(:events_between) do |date_range|
-            expect(date_range.min.to_time.to_i).to eq(now.to_time.to_i)
-            expect(date_range.max.to_time.to_i).to eq(future.to_time.to_i)
+            expect(date_range.min).to eq_time(now)
+            expect(date_range.max).to eq_time(future)
             :results
           end
 
@@ -36,7 +36,7 @@ module Almanack
 
     describe "#events_between" do
       it "collects the event sources' events between two dates" do
-        today = DateTime.now
+        today = Time.now
         yesterday = today - 1
         tomorrow = today + 1
 

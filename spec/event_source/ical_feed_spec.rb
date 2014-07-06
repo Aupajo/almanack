@@ -13,8 +13,8 @@ module Almanack::EventSource
 
         Timecop.freeze(2014, 4, 3) do
           VCR.use_cassette('google_calendar') do
-            from = DateTime.now
-            to = from + 30
+            from = Time.now
+            to = from + 30 * 24 * 60 * 60
             events = feed.events_between(from..to)
           end
         end

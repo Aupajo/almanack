@@ -15,7 +15,7 @@ Almanack.config do |c|
     {
       title: "Edit my calendar's settings",
       description: "Edit the configuration at #{__FILE__}",
-      start_date: DateTime.now
+      start_date: Time.now + 30 * 60
     }
   ]
 end

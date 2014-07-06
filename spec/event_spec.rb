@@ -9,13 +9,13 @@ module Almanack
     end
 
     it "has a start date" do
-      event = Event.new(start_date: DateTime.new(2014, 01, 01))
-      expect(event.start_date).to eq(DateTime.new(2014, 01, 01))
+      event = Event.new(start_date: Time.new(2014, 01, 01))
+      expect(event.start_date).to eq_time(Time.new(2014, 01, 01))
     end
 
     it "has a end date" do
-      event = Event.new(end_date: DateTime.new(2014, 01, 02))
-      expect(event.end_date).to eq(DateTime.new(2014, 01, 02))
+      event = Event.new(end_date: Time.new(2014, 01, 02))
+      expect(event.end_date).to eq_time(Time.new(2014, 01, 02))
     end
 
     it "has a location" do

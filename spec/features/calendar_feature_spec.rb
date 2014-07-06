@@ -4,15 +4,17 @@ describe "Viewing a calendar", :feature do
   before { Almanack.reset! }
 
   it "displays all upcoming events" do
-    today = DateTime.now
+    now = Time.now
 
     Almanack.config.add_events [
-      { title: "Hogswatch", start_date: today },
-      { title: "Soul Cake Tuesday", start_date: today + 10 },
-      { title: "Eve of Small Gods", start_date: today + 30 },
+      { title: "Hogswatch", start_date: now },
+      { title: "Soul Cake Tuesday", start_date: now + 10 * 24 * 60 * 60 },
+      { title: "Eve of Small Gods", start_date: now + 30 * 24 * 60 * 60 },
     ]
 
-    get "/"
+    Timecop.freeze(now) do
+      get "/"
+    end
 
     expect(last_response).to have_event_on_page("Hogswatch")
     expect(last_response).to have_event_on_page("Soul Cake Tuesday")

@@ -9,8 +9,8 @@ module Almanack::EventSource
 
         Timecop.freeze(2014, 5, 24) do
           VCR.use_cassette('meetup') do
-            from = DateTime.now
-            to = from + 30
+            from = Time.now
+            to = from + 30 * 24 * 60 * 60
             events = feed.events_between(from..to)
           end
         end

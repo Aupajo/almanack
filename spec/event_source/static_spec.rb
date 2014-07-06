@@ -4,7 +4,7 @@ module Almanack::EventSource
   describe Static do
     describe "#events_between" do
       it "returns events between two dates" do
-        now = DateTime.now
+        now = Time.now
         yesterday = now - 1
         tomorrow = now + 1
 

@@ -33,8 +33,8 @@ module Almanack
 
         Event.new(
           title: event_name,
-          start_date: start_time.to_datetime,
-          end_date: end_time.to_datetime,
+          start_date: start_time,
+          end_date: end_time,
           description: result['description'],
           location: location_from_venue(result['venue']),
           url: result['event_url']

@@ -13,6 +13,7 @@ Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 RSpec.configure do |config|
   config.include ServerSupport, :feature
   config.include EventMatchers
+  config.include TimeComparisonMatchers
 end
 
 VCR.configure do |config|
