@@ -10,11 +10,14 @@ module Almanack
     end
 
     def events
-      from_date = DateTime.now
-      to_date = DateTime.now + days_lookahead
+      now = DateTime.now
+      future = now + days_lookahead
+      events_between(now..future)
+    end
 
+    def events_between(date_range)
       event_sources.map do |event_source|
-        event_source.events_between(from_date..to_date)
+        event_source.events_between(date_range)
       end.flatten.sort_by(&:start_date)
     end
 

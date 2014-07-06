@@ -4,19 +4,19 @@ module Almanack::EventSource
   describe Static do
     describe "#events_between" do
       it "returns events between two dates" do
-        basic_events = Static.new [
-          { title: "Soul Cake Tuesday" },
-          { title: "Hogswatch" }
+        now = DateTime.now
+        yesterday = now - 1
+        tomorrow = now + 1
+
+        source = Static.new [
+          { title: 'Yesterday', start_date: yesterday },
+          { title: 'Today', start_date: now },
+          { title: 'Tomorrow', start_date: tomorrow }
         ]
 
-        from = DateTime.now
-        to = from + 30
-
-        events = basic_events.events_between(from..to)
-
-        expect(events.size).to eq(2)
-        expect(events.first.title).to eq("Soul Cake Tuesday")
-        expect(events.last.title).to eq("Hogswatch")
+        expect(source.events_between(yesterday..tomorrow).map(&:title)).to eq(%w( Yesterday Today Tomorrow ))
+        expect(source.events_between(now..tomorrow).map(&:title)).to eq(%w( Today Tomorrow ))
+        expect(source.events_between(yesterday..now).map(&:title)).to eq(%w( Yesterday Today ))
       end
     end
   end

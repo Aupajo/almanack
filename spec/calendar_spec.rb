@@ -13,39 +13,43 @@ module Almanack
     end
 
     describe "#events" do
-      describe "with simple events" do
-        it "returns the events" do
-          config = Configuration.new
-          config.add_events [
-            { title: "Hogswatch" }
-          ]
+      it "calls events_between with now and the days lookahead" do
+        config = Configuration.new
+        calendar = Calendar.new(config)
 
-          calendar = Calendar.new(config)
+        now = DateTime.now
+        lookahead = 42
+        future = now + lookahead
 
-          expect(calendar.events.size).to eq(1)
-          expect(calendar.events.first.title).to eq('Hogswatch')
-        end
-      end
-
-      describe "with an iCal feed" do
-        it "returns the event occurrences" do
-          config = Configuration.new
-          config.add_ical_feed "https://www.google.com/calendar/ical/61s2re9bfk01abmla4d17tojuo%40group.calendar.google.com/public/basic.ics"
-
-          calendar = Calendar.new(config)
-
-          events = nil
-
-          Timecop.freeze(2014, 4, 3) do
-            VCR.use_cassette('google_calendar') do
-              events = calendar.events
-            end
+        Timecop.freeze(now) do
+          expect(calendar).to receive(:days_lookahead) { lookahead }
+          expect(calendar).to receive(:events_between) do |date_range|
+            expect(date_range.min.to_time.to_i).to eq(now.to_time.to_i)
+            expect(date_range.max.to_time.to_i).to eq(future.to_time.to_i)
+            :results
           end
 
-          expect(events.size).to eq(15)
-          expect(events).to all_have_properties(:title, :start_date)
-          expect(events).to be_in_order
+          expect(calendar.events).to eq(:results)
         end
+      end
+    end
+
+    describe "#events_between" do
+      it "collects the event sources' events between two dates" do
+        today = DateTime.now
+        yesterday = today - 1
+        tomorrow = today + 1
+
+        config = Configuration.new
+        config.add_events [
+          { title: 'Today', start_date: today },
+          { title: 'Yesterday', start_date: yesterday },
+          { title: 'Tomorrow', start_date: tomorrow },
+        ]
+
+        calendar = Calendar.new(config)
+
+        expect(calendar.events_between(today..tomorrow).map(&:title)).to eq(%w( Today Tomorrow ))
       end
     end
 
