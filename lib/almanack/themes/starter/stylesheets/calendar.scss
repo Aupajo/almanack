@@ -1,0 +1,24 @@
+body {
+  font: 12pt/1.6em "Helvetica Neue", Arial, sans-serif;
+  margin: 4em;
+}
+
+header {
+  border-bottom: 2px solid;
+}
+
+footer {
+  border-top: 2px solid;
+}
+
+.event {
+  border-bottom: 1px solid #ccc;
+  padding: 2em 0;
+
+  .date {
+    .month, .day {
+      display: inline;
+      font-weight: bold;
+    }
+  }
+}

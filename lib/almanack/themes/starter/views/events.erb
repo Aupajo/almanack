@@ -1,0 +1,31 @@
+<% title 'Upcoming events' %>
+
+<div class="events">
+  <% calendar.events.each do |event| %>
+    <div class="event">
+      <div class="date">
+        <div class="month"><%= event.start_date.strftime('%a') %></div>
+        <div class="day"><%= event.start_date.strftime('%d') %></div>
+      </div>
+      <div class="details">
+        <h3 class="title"><%= event.title %></h3>
+
+        <% if event.description %>
+          <div class="description">
+            <%= event.description %>
+          </div>
+        <% end %>
+
+         <dl>
+           <% if event.location %>
+            <dt>Where</dt>
+            <dd><%= event.location %></dd>
+          <% end %>
+
+          <dt>When</dt>
+          <dd><%= event.formatted_date %></dd>
+        </dl>
+      </div>
+    </div>
+  <% end %>
+</div>

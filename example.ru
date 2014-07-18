@@ -6,6 +6,8 @@ now = Time.now
 Almanack.config do |calendar|
   calendar.title = 'Discworld Holidays'
 
+  calendar.theme = 'starter'
+
   calendar.add_events [
     {
       title: "Hogswatch",
