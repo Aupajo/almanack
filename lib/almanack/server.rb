@@ -29,6 +29,14 @@ module Almanack
       def calendar
         @calendar ||= Almanack.calendar
       end
+
+      def page_title(separator: " – ")
+        [@title, calendar.title].compact.join(separator)
+      end
+
+      def title(value)
+        @title = value
+      end
     end
 
     not_found do
