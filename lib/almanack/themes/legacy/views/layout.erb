@@ -8,8 +8,8 @@
   <body>
 
     <header>
-      <h1><%= @calendar.title %></h1>
-      <h2>The Next <%= @calendar.days_lookahead %> Days</h2>
+      <h1><%= calendar.title %></h1>
+      <h2>The Next <%= calendar.days_lookahead %> Days</h2>
     </header>
 
     <%= yield %>
@@ -20,8 +20,7 @@
       </div>
 
       <div class="fork">
-        Powered by <a href="http://github.com/Aupajo/sinatra-gcal">Almanack</a>.
-        <a href="http://github.com/Aupajo/sinatra-gcal/issues">Bugs? Features?</a>
+        Powered by <a href="<%= almanack_project_url %>">Almanack</a>.
       </div>
     </footer>
 
