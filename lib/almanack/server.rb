@@ -25,10 +25,19 @@ module Almanack
       def almanack_issues_url
         Almanack::ISSUES
       end
+
+      def calendar
+        @calendar ||= Almanack.calendar
+      end
+    end
+
+    not_found do
+      status 404
+      erb :error
     end
 
     get "/" do
-      erb :events, locals: { calendar: Almanack.calendar }
+      erb :events
     end
 
     get "/#{settings.feed_path}" do
@@ -37,8 +46,8 @@ module Almanack
     end
 
     get "/stylesheets/:name" do
-      # TODO make safe
-      sass :"../stylesheets/#{params[:name]}"
+      path = Pathname("..").join("stylesheets", params[:name])
+      scss path.to_s.to_sym
     end
   end
 end

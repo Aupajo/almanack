@@ -1,0 +1,11 @@
+<div id="error">
+  <h1>Oops.</h1>
+
+  <p>Something went wrong.</p>
+
+  <% if request.path == '/' %>
+    <p>Sorry about that. Check back later!</p>
+  <% else %>
+    <p><a href="/">Return home</a></p>
+  <% end %>
+</div>
