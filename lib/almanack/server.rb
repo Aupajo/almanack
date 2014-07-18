@@ -44,6 +44,29 @@ module Almanack
       erb :error
     end
 
+    def basename(file)
+      Pathname(file).split.last.to_s.split(".", 2).first
+    end
+
+    def locate_asset(name, within: path)
+      name = basename(name)
+      path = options.root.join(within)
+      available = Pathname.glob(path.join("*"))
+      asset = available.find { |path| basename(path) == name }
+      raise "Could not find stylesheet #{name} inside #{available}" if asset.nil?
+      asset
+    end
+
+    def auto_render_template(asset)
+      renderer = asset.extname.split(".").last
+      content = asset.read
+      respond_to?(renderer) ? send(renderer, content) : content
+    end
+
+    def auto_render_asset(*args)
+      auto_render_template locate_asset(*args)
+    end
+
     get "/" do
       erb :events
     end
@@ -54,8 +77,13 @@ module Almanack
     end
 
     get "/stylesheets/:name" do
-      path = Pathname("..").join("stylesheets", params[:name])
-      scss path.to_s.to_sym
+      content_type :css
+      auto_render_asset params[:name], within: "stylesheets"
+    end
+
+    get "/javascripts/:name" do
+      content_type :js
+      auto_render_asset params[:name], within: "javascripts"
     end
   end
 end
