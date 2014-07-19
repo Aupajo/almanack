@@ -22,6 +22,7 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 * 100% customisable themes with Sass and CoffeeScript support
 * Server optional (you can use the underlying calendar library by itself)
 * Rack-compatible (mount inside any Rails application)
+* Produces iCal feed for smartphone and desktop calendar apps to subscribe to
 
 ## Installation
 
