@@ -87,13 +87,13 @@ is already initialized for you when you run `almanack new`):
 
 With the [Heroku Toolbelt](https://toolbelt.heroku.com) installed:
 
-  almanack deploy my-awesome-calendar
+    almanack deploy my-awesome-calendar
 
 Will create and deploy http://my-awesome-calendar.herokuapp.com/.
 
 Subsequent commits can be deployed with just:
 
-  almanack deploy
+    almanack deploy
 
 ## Contributing
 
