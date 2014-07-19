@@ -54,7 +54,7 @@ module Almanack
         say "==> Run your new calendar!"
         say
         say "  cd #{path}"
-        say "  almnack start"
+        say "  almanack start"
         say
       end
     end
