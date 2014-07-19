@@ -2,7 +2,7 @@ require 'almanack/server'
 
 Almanack.config do |c|
   c.title = "My Calendar"
-  c.theme = "<%= theme %>" # available: <%= available_themes.join(', ') %>
+  c.theme = "<%= theme_name %>" # available: <%= available_themes.join(', ') %>
 
   # Your group's URL name is what you'd find at www.meetup.com/Your-Group-URL-Name/
   # You can get a Meetup API key from https://secure.meetup.com/meetup_api/key

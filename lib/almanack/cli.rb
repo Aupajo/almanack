@@ -32,11 +32,11 @@ module Almanack
     option :theme, default: 'legacy', desc: "Which theme to use (available: #{available_themes.join(', ')})"
     def new(path)
       path = Pathname(path).cleanpath
-      
-      directory "new", path
+
+      directory "templates/new", path
 
       inside path do
-        say_status :run, "bundle install"
+        say_status :installing, "bundler dependencies"
         system "bundle install --quiet"
         say
         say "==> Run your new calendar!"
@@ -47,8 +47,22 @@ module Almanack
       end
     end
 
+    desc "theme NAME", "Create a new theme"
+    def theme(name)
+      directory "lib/almanack/themes/starter", "themes/#{name}"
+
+      config_file = Pathname("config.ru")
+
+      if config_file.exist?
+        say_status :update, "config.ru"
+        set_theme_pattern = /\.theme\s*=\s*['"].*?['"]/
+        replacement = config_file.read.gsub(set_theme_pattern, ".theme = '#{name}'")
+        config_file.open('w') { |file| file.puts replacement }
+      end
+    end
+
     no_tasks do
-      def theme
+      def theme_name
         options[:theme]
       end
 
@@ -58,7 +72,7 @@ module Almanack
     end
 
     def self.source_root
-      Pathname(__dir__).parent.parent.join("templates")
+      Pathname(__dir__).parent.parent
     end
   end
 end
