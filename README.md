@@ -70,6 +70,24 @@ Almanack.config do |c|
 end
 ```
 
+## Deploying to Heroku
+
+Deployment works with Git and Heroku. First, add your work to git (an repository
+is already initialized for you when you run `almanack new`):
+
+    git add .
+    git commit -m "My awesome calendar"
+
+With the [Heroku Toolbelt](https://toolbelt.heroku.com) installed:
+
+  almanack deploy my-awesome-calendar
+
+Will create and deploy http://my-awesome-calendar.herokuapp.com/.
+
+Subsequent commits can be deployed with just:
+
+  almanack deploy
+
 ## Contributing
 
 1. Fork it ( http://github.com/Aupajo/almanack/fork )
