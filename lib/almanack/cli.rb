@@ -30,14 +30,25 @@ module Almanack
 
     desc "new PATH", "Create a new Almanack project"
     option :theme, default: 'legacy', desc: "Which theme to use (available: #{available_themes.join(', ')})"
+    option :git, type: :boolean, default: true, desc: "Whether to initialize an empty git repo"
     def new(path)
       path = Pathname(path).cleanpath
 
       directory "templates/new", path
 
+      if options[:git]
+        template('templates/gitignore', path.join(".gitignore"))
+      end
+
       inside path do
         say_status :installing, "bundler dependencies"
         system "bundle install --quiet"
+
+        if options[:git]
+          say_status :git, "initializing repository"
+          git "init"
+        end
+
         say
         say "==> Run your new calendar!"
         say
@@ -61,14 +72,56 @@ module Almanack
       end
     end
 
+    desc "deploy [NAME]", "Deploy your site to Heroku (requires Heroku toolbelt)"
+    def deploy(name = nil)
+      remotes = `git remote -v`
+
+      heroku_remote = remotes.lines.find do |remote|
+        remote.split(' ').first == "heroku"
+      end
+
+      if !heroku_remote
+        say "No Heroku remote detected."
+        create_heroku_app(name)
+      end
+
+      current_branch = git("rev-parse --abbrev-ref HEAD")
+
+      say "Deploying #{current_branch}..."
+      run "git push heroku #{current_branch}:master --force"
+    end
+
     no_tasks do
+      def create_heroku_app(name)
+        heroku_command = `which heroku`.strip
+
+        if heroku_command.empty?
+          say "Heroku Toolbelt not detected. Please install from:"
+          say "  https://toolbelt.heroku.com"
+          abort
+        end
+
+        say_status :heroku, "creating app..."
+        run "#{heroku_command} create #{name}"
+      end
+
       def theme_name
         options[:theme]
+      end
+
+      def git(command)
+        output = `git #{command}`
+        abort "Git failed: #{output}" if $?.exitstatus != 0
+        output.strip
       end
 
       def available_themes
         self.class.available_themes
       end
+    end
+
+    def self.exit_on_failure?
+      true
     end
 
     def self.source_root

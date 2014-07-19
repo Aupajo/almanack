@@ -52,6 +52,8 @@ Almanack.config do |c|
 end
 ```
 
+**Note:** You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key) to use Meetup.
+
 ## Custom themes
 
 Inside your project, you can generate a new theme with:
@@ -67,10 +69,6 @@ Almanack.config do |c|
   ...
 end
 ```
-
-### Meetup.com
-
-You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key).
 
 ## Contributing
 
