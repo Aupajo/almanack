@@ -8,6 +8,10 @@
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
+![Sinatra GCal example](http://i.imgur.com/odgyR.png)
+
+See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
+
 ## Features
 
 * Aggregate multiple calendars together into one stream
