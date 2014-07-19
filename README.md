@@ -21,7 +21,7 @@ A calendar that combines events from different sources (such as Google Calendar,
 
 Run the following command:
 
-    gem install almanack --pre
+    gem install almanack
 
 ## Creating a calendar
 
