@@ -1,5 +1,6 @@
 require "thor"
 require "pathname"
+require "almanack/version"
 
 module Almanack
   class CLI < Thor
