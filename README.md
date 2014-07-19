@@ -1,10 +1,10 @@
 # Almanack
 
-[![Build Status](https://travis-ci.org/Aupajo/sinatra-gcal.svg)](https://travis-ci.org/Aupajo/sinatra-gcal)
-[![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
-[![Code Climate](https://codeclimate.com/github/Aupajo/sinatra-gcal/coverage.png)](https://codeclimate.com/github/Aupajo/sinatra-gcal)
+[![Build Status](https://travis-ci.org/Aupajo/almanack.svg)](https://travis-ci.org/Aupajo/almanack)
+[![Code Climate](https://codeclimate.com/github/Aupajo/almanack.png)](https://codeclimate.com/github/Aupajo/almanack)
+[![Code Climate](https://codeclimate.com/github/Aupajo/almanack/coverage.png)](https://codeclimate.com/github/Aupajo/almanack)
 
-*This project was formerly Sinatra-GCal. A [legacy branch](https://github.com/Aupajo/almanack/tree/sinatra-gcal) exists for that project.*
+*This project was formerly Sinatra-GCal. A [legacy branch](https://github.com/Aupajo/almanack/tree/almanack) exists for that project.*
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
