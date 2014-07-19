@@ -6,6 +6,17 @@
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
+Features:
+
+* Aggregate multiple calendars together into one stream
+* Supports iCal feeds (incuding Google Calendars)
+* Supports Meetup.com groups
+* Just supply a hash to create any arbitrary event
+* Supports being freely hosted on Heroku
+* 100% customisable themes with Sass and CoffeeScript support
+* Server optional (write your own!)
+* Rack-compatible (mount inside any Rails application)
+
 ## Installation
 
 Run the following command:
