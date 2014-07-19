@@ -6,7 +6,7 @@
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
-Features:
+## Features
 
 * Aggregate multiple calendars together into one stream
 * Supports iCal feeds (incuding Google Calendars)
@@ -14,7 +14,7 @@ Features:
 * Just supply a hash to create any arbitrary event
 * Supports being freely hosted on Heroku
 * 100% customisable themes with Sass and CoffeeScript support
-* Server optional (write your own!)
+* Server optional (you can use the underlying calendar library by itself)
 * Rack-compatible (mount inside any Rails application)
 
 ## Installation
@@ -38,9 +38,35 @@ Once set up, run:
 
 By default, your calendar will run on http://localhost:9292.
 
-## Configuring
+## Configuration
 
 See examples inside `config.ru` for iCal feeds, Meetup.com, or static events.
+
+```ruby
+Almanack.config do |c|
+  c.title = 'My Calendar'
+  c.theme = 'my-custom-theme'
+  c.add_ical_feed 'http://example.org/events.ics'
+  c.add_ical_feed 'http://example.org/more-events.ics'
+  c.add_meetup_group group_urlname: 'Christchurch-Ruby-Group', key: 'mysecretkey'
+end
+```
+
+## Custom themes
+
+Inside your project, you can generate a new theme with:
+
+    almanack theme my-theme-name
+
+Remember to update your `config.ru` to switch themes:
+
+```ruby
+Almanack.config do |c|
+  ...
+  c.theme = 'my-theme-name'
+  ...
+end
+```
 
 ### Meetup.com
 
