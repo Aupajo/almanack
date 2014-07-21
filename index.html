@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Almanack : iCal, Google Calendar, and Meetup.com events in one calendar." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Almanack</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Aupajo/almanack">View on GitHub</a>
+
+          <h1 id="project_title">Almanack</h1>
+          <h2 id="project_tagline">iCal, Google Calendar, and Meetup.com events in one calendar.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Aupajo/almanack/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Aupajo/almanack/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="almanack" class="anchor" href="#almanack"><span class="octicon octicon-link"></span></a>Almanack</h1>
+
+<p><a href="https://travis-ci.org/Aupajo/almanack"><img src="https://travis-ci.org/Aupajo/almanack.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/Aupajo/almanack"><img src="https://codeclimate.com/github/Aupajo/almanack.png" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/Aupajo/almanack"><img src="https://codeclimate.com/github/Aupajo/almanack/coverage.png" alt="Code Climate"></a></p>
+
+<p><em>This project was formerly Sinatra-GCal. A <a href="https://github.com/Aupajo/almanack/tree/almanack">legacy branch</a> exists for that project.</em></p>
+
+<p>A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on <a href="http://heroku.com">Heroku</a>.</p>
+
+<p><img src="http://i.imgur.com/odgyR.png" alt="Sinatra GCal example"></p>
+
+<p>See a demo running at <a href="http://christchurch.events.geek.nz">http://christchurch.events.geek.nz</a></p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Aggregate multiple calendars together into one stream</li>
+<li>Supports iCal feeds (incuding Google Calendars)</li>
+<li>Supports Meetup.com groups</li>
+<li>Just supply a hash to create any arbitrary event</li>
+<li>Supports being freely hosted on Heroku</li>
+<li>100% customisable themes with Sass and CoffeeScript support</li>
+<li>Server optional (you can use the underlying calendar library by itself)</li>
+<li>Rack-compatible (mount inside any Rails application)</li>
+<li>Produces iCal feed for smartphone and desktop calendar apps to subscribe to</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Run the following command:</p>
+
+<pre><code>gem install almanack
+</code></pre>
+
+<h2>
+<a name="creating-a-calendar" class="anchor" href="#creating-a-calendar"><span class="octicon octicon-link"></span></a>Creating a calendar</h2>
+
+<p>Generate a new calendar with:</p>
+
+<pre><code>almanack new my-calendar
+</code></pre>
+
+<p>This will create a directory called <code>my-calendar</code> and set up your new project.</p>
+
+<p>Once set up, run:</p>
+
+<pre><code>cd my-calendar
+almanack start
+</code></pre>
+
+<p>By default, your calendar will run on http://localhost:9292.</p>
+
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>See examples inside <code>config.ru</code> for iCal feeds, Meetup.com, or static events.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="no">Almanack</span><span class="o">.</span><span class="n">config</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">'My Calendar'</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">'my-custom-theme'</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">add_ical_feed</span> <span class="s1">'http://example.org/events.ics'</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">add_ical_feed</span> <span class="s1">'http://example.org/more-events.ics'</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">add_meetup_group</span> <span class="ss">group_urlname</span><span class="p">:</span> <span class="s1">'Christchurch-Ruby-Group'</span><span class="p">,</span> <span class="ss">key</span><span class="p">:</span> <span class="s1">'mysecretkey'</span>
+<span class="k">end</span>
+</pre></div>
+
+<p><strong>Note:</strong> You'll need your <a href="https://secure.meetup.com/meetup_api/key">Meetup.com API key</a> to use Meetup.</p>
+
+<h2>
+<a name="custom-themes" class="anchor" href="#custom-themes"><span class="octicon octicon-link"></span></a>Custom themes</h2>
+
+<p>Inside your project, you can generate a new theme with:</p>
+
+<pre><code>almanack theme my-theme-name
+</code></pre>
+
+<p>Remember to update your <code>config.ru</code> to switch themes:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="no">Almanack</span><span class="o">.</span><span class="n">config</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+  <span class="n">c</span><span class="o">.</span><span class="n">theme</span> <span class="o">=</span> <span class="s1">'my-theme-name'</span>
+  <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+<span class="k">end</span>
+</pre></div>
+
+<h2>
+<a name="deploying-to-heroku" class="anchor" href="#deploying-to-heroku"><span class="octicon octicon-link"></span></a>Deploying to Heroku</h2>
+
+<p>Deployment works with Git and Heroku. First, add your work to git (an repository
+is already initialized for you when you run <code>almanack new</code>):</p>
+
+<pre><code>git add .
+git commit -m "My awesome calendar"
+</code></pre>
+
+<p>With the <a href="https://toolbelt.heroku.com">Heroku Toolbelt</a> installed:</p>
+
+<pre><code>almanack deploy my-awesome-calendar
+</code></pre>
+
+<p>Will create and deploy <a href="http://my-awesome-calendar.herokuapp.com/">http://my-awesome-calendar.herokuapp.com/</a>.</p>
+
+<p>Subsequent commits can be deployed with just:</p>
+
+<pre><code>almanack deploy
+</code></pre>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it ( <a href="http://github.com/Aupajo/almanack/fork">http://github.com/Aupajo/almanack/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Almanack maintained by <a href="https://github.com/Aupajo">Aupajo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
