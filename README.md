@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Aupajo/almanack.svg)](https://travis-ci.org/Aupajo/almanack)
 [![Code Climate](https://codeclimate.com/github/Aupajo/almanack.png)](https://codeclimate.com/github/Aupajo/almanack)
-[![Code Climate](https://codeclimate.com/github/Aupajo/almanack/coverage.png)](https://codeclimate.com/github/Aupajo/almanack)
+[![Gem Version](https://badge.fury.io/rb/almanack.svg)](http://badge.fury.io/rb/almanack)
 
 *This project was formerly Sinatra-GCal. A [legacy branch](https://github.com/Aupajo/almanack/tree/almanack) exists for that project.*
 
