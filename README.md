@@ -21,7 +21,7 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 * Supports being freely hosted on Heroku
 * 100% customisable themes with Sass and CoffeeScript support
 * Server optional (you can use the underlying calendar library by itself)
-* Rack-compatible (mount inside any Rails application)
+* Rack-compatible (can be mounted inside a Rails app if needed)
 * Produces iCal feed for smartphone and desktop calendar apps to subscribe to
 
 ## Installation
