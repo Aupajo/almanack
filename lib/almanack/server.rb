@@ -55,7 +55,7 @@ module Almanack
 
     def locate_asset(name, within: path)
       name = basename(name)
-      path = options.root.join(within)
+      path = settings.root.join(within)
       available = Pathname.glob(path.join("*"))
       asset = available.find { |path| basename(path) == name }
       raise "Could not find stylesheet #{name} inside #{available}" if asset.nil?
