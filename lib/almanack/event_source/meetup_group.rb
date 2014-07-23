@@ -42,6 +42,8 @@ module Almanack
       end
 
       def location_from_venue(venue)
+        return nil if venue.nil?
+        
         %w{ name address_1 address_2 address_3 city state country }.map do |attr|
           venue[attr]
         end.compact.join(', ')
