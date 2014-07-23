@@ -1,6 +1,7 @@
 require 'net/http'
 require 'uri'
 require 'ri_cal'
+require 'sass'
 
 module Almanack
   class Configuration
@@ -31,6 +32,11 @@ module Almanack
       paths = theme_paths.map { |path| path.join(theme) }
       root = paths.find { |path| path.exist? }
       root || raise(ThemeNotFound, "Could not find theme #{theme} in #{paths}")
+    end
+
+    def theme=(theme)
+      @theme = theme
+      Sass.load_paths << theme_root.join('stylesheets')
     end
 
     def add_ical_feed(url)
