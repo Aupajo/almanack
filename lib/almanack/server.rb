@@ -44,6 +44,11 @@ module Almanack
       erb :error
     end
 
+    error do
+      status 500
+      erb :error
+    end
+
     def basename(file)
       Pathname(file).split.last.to_s.split(".", 2).first
     end
