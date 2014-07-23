@@ -1,0 +1,13 @@
+# <%= title %>
+
+**<%= title %>** is powered by [Almanack](<%= almanack_homepage %>).
+
+Start the server inside your project's directory with:
+
+    almanack start
+
+By default, this will start a local server at http://localhost:9292/
+
+Read more at <%= almanack_homepage %>
+
+Features? Bugs? <%= almanack_issues %>

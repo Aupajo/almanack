@@ -33,15 +33,15 @@ module Almanack
     option :theme, default: 'legacy', desc: "Which theme to use (available: #{available_themes.join(', ')})"
     option :git, type: :boolean, default: true, desc: "Whether to initialize an empty git repo"
     def new(path)
-      path = Pathname(path).cleanpath
+      @path = Pathname(path).cleanpath
 
       directory "templates/new", path
 
       if options[:git]
-        template('templates/gitignore', path.join(".gitignore"))
+        template('templates/gitignore', @path.join(".gitignore"))
       end
 
-      inside path do
+      inside @path do
         say_status :installing, "bundler dependencies"
         system "bundle install --quiet"
 
@@ -53,7 +53,7 @@ module Almanack
         say
         say "==> Run your new calendar!"
         say
-        say "  cd #{path}"
+        say "  cd #{@path}"
         say "  almanack start"
         say
       end
@@ -108,6 +108,20 @@ module Almanack
 
       def theme_name
         options[:theme]
+      end
+
+      def almanack_homepage
+        Almanack::HOMEPAGE
+      end
+
+      def almanack_issues
+        Almanack::ISSUES
+      end
+
+      def title
+        basename = @path.to_s.split('/', 2).last.split('.', 2).first
+        sanitized = basename.gsub('-', ' ')
+        sanitized.split(/\s+/).map(&:capitalize).join(' ')
       end
 
       def git(command)

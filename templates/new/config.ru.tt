@@ -1,7 +1,7 @@
 require 'almanack/server'
 
 Almanack.config do |c|
-  c.title = "My Calendar"
+  c.title = <%= title.inspect %>
   c.theme = "<%= theme_name %>" # available: <%= available_themes.join(', ') %>
   c.days_lookahead = 30
 
