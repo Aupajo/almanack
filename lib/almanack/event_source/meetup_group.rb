@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 require 'addressable/uri'
+require 'cachy'
 
 module Almanack
   module EventSource
@@ -43,7 +44,7 @@ module Almanack
 
       def location_from_venue(venue)
         return nil if venue.nil?
-        
+
         %w{ name address_1 address_2 address_3 city state country }.map do |attr|
           venue[attr]
         end.compact.join(', ')
@@ -66,7 +67,7 @@ module Almanack
       end
 
       def results
-        response['results']
+        Cachy.cache(uri.to_s.to_sym, :expires_in => 15 * 60){ puts "miss for #{uri}"; response['results'] }
       end
 
       def uri

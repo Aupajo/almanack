@@ -2,6 +2,8 @@ require 'net/http'
 require 'uri'
 require 'ri_cal'
 require 'sass'
+require 'cachy'
+require 'moneta'
 
 module Almanack
   class Configuration
@@ -26,6 +28,7 @@ module Almanack
         Pathname.pwd.join('themes'),
         Pathname(__dir__).join('themes')
       ]
+      Cachy.cache_store = cache
     end
 
     def theme_root
@@ -49,6 +52,10 @@ module Almanack
 
     def add_meetup_group(options)
       @event_sources << EventSource::MeetupGroup.new(options)
+    end
+
+    def cache
+      @cache ||= Moneta.new(:LRUHash)
     end
   end
 end
