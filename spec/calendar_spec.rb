@@ -53,8 +53,11 @@ module Almanack
       end
     end
 
-    it "has a 30 day lookahead" do
-      expect(Calendar.new(double).days_lookahead).to eq(30)
+    describe "#days_lookahead" do
+      it "delegates to the configuration's days_lookahead" do
+        config = double(days_lookahead: :delegated)
+        expect(Calendar.new(config).days_lookahead).to eq(:delegated)
+      end
     end
 
   end

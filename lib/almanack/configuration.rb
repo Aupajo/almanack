@@ -7,9 +7,10 @@ module Almanack
     class ThemeNotFound < StandardError; end
 
     DEFAULT_THEME = "legacy"
+    DEFAULT_DAYS_LOOKAHEAD = 30
 
     attr_reader :event_sources
-    attr_accessor :title, :theme, :theme_paths, :theme_root
+    attr_accessor :title, :theme, :theme_paths, :theme_root, :days_lookahead
 
     def initialize
       reset!
@@ -17,6 +18,7 @@ module Almanack
 
     def reset!
       @theme = DEFAULT_THEME
+      @days_lookahead = DEFAULT_DAYS_LOOKAHEAD
       @event_sources = []
 
       @theme_paths = [

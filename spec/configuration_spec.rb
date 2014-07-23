@@ -27,6 +27,16 @@ module Almanack
       end
     end
 
+    describe "#days_lookahead" do
+      specify { expect(Configuration.new.days_lookahead).to eq(30) }
+
+      specify "it can be set" do
+        config = Configuration.new
+        config.days_lookahead = 365
+        expect(config.days_lookahead).to eq(365)
+      end
+    end
+
     describe "#add_events" do
       it "adds a simple event collection event source" do
         config = Configuration.new

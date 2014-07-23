@@ -8,7 +8,7 @@ module Almanack
     ONE_YEAR = 365 * ONE_DAY
 
     extend Forwardable
-    def_delegators :@config, :event_sources, :title
+    def_delegators :@config, :event_sources, :title, :days_lookahead
 
     def initialize(config)
       @config = config
@@ -48,10 +48,6 @@ module Almanack
       end
 
       ical.to_s
-    end
-
-    def days_lookahead
-      30
     end
   end
 end
