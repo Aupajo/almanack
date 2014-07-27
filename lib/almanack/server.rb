@@ -72,6 +72,16 @@ module Almanack
       auto_render_template locate_asset(*args)
     end
 
+    def theme_stylesheet_path
+      settings.root.join('stylesheets')
+    end
+
+    before do
+      if !Sass.load_paths.include?(theme_stylesheet_path)
+        Sass.load_paths << theme_stylesheet_path
+      end
+    end
+
     get "/" do
       erb :events
     end
