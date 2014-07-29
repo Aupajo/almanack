@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "sass"
 require "almanack"
+require "almanack/helpers"
 
 module Almanack
   class Server < Sinatra::Base
@@ -13,35 +14,7 @@ module Almanack
     set :protection, except: :frame_options
     set :feed_path, "feed.ics"
 
-    helpers do
-      def feed_url
-        "webcal://#{request.host}:#{request.port}/#{settings.feed_path}"
-      end
-
-      def almanack_project_url
-        Almanack::HOMEPAGE
-      end
-
-      def almanack_issues_url
-        Almanack::ISSUES
-      end
-
-      def now
-        Time.now
-      end
-
-      def calendar
-        @calendar ||= Almanack.calendar
-      end
-
-      def page_title(separator: " – ")
-        [@title, calendar.title].compact.join(separator)
-      end
-
-      def title(value)
-        @title = value
-      end
-    end
+    helpers Almanack::Helpers
 
     not_found do
       status 404
