@@ -1,7 +1,3 @@
-require 'net/http'
-require 'uri'
-require 'ri_cal'
-
 module Almanack
   class Configuration
     class ThemeNotFound < StandardError; end

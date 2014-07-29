@@ -1,7 +1,3 @@
-require 'net/http'
-require 'uri'
-require 'ri_cal'
-
 module Almanack
   module EventSource
     class IcalFeed

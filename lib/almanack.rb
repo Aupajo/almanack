@@ -1,4 +1,8 @@
 require "pathname"
+require "json"
+require "ri_cal"
+require "addressable/uri"
+
 require "almanack/version"
 require "almanack/configuration"
 require "almanack/calendar"

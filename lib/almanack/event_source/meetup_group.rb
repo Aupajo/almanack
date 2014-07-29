@@ -1,7 +1,3 @@
-require 'net/http'
-require 'json'
-require 'addressable/uri'
-
 module Almanack
   module EventSource
     class MeetupGroup
