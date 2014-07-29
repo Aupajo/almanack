@@ -2,10 +2,11 @@ require "sinatra"
 require "sinatra/reloader"
 require "sass"
 require "almanack"
-require "almanack/helpers"
 
 module Almanack
   class Server < Sinatra::Base
+    require "almanack/server/helpers"
+
     configure :development do
       register Sinatra::Reloader
     end
@@ -13,8 +14,6 @@ module Almanack
     set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
     set :feed_path, "feed.ics"
-
-    helpers Almanack::Helpers
 
     not_found do
       status 404
