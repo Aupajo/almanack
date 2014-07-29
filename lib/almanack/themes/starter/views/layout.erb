@@ -7,6 +7,9 @@
   </head>
   <body>
 
+    <!-- See http://strftime.net and http://strftimer.com for datee syntax reference -->
+    <p>The time is now <b><%= now.strftime('%A, %-d %B, %Y at %-l:%M%P %z') %></b>.</p>
+
     <header>
       <h1><a href="/"><%= calendar.title %></a></h1>
       <h2>The Next <%= calendar.days_lookahead %> Days</h2>

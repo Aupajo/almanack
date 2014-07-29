@@ -26,6 +26,10 @@ module Almanack
         Almanack::ISSUES
       end
 
+      def now
+        Time.now
+      end
+
       def calendar
         @calendar ||= Almanack.calendar
       end
