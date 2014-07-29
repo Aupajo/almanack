@@ -14,7 +14,7 @@ module Almanack
       private
 
       def events
-        request = MeetupAPIRequest.new(@request_options)
+        request = MeetupAPIRequest.new(@request_options.clone)
         request.results.map { |result| event_from(result) }
       end
 
