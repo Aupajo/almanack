@@ -4,7 +4,9 @@ module Almanack::EventSource
   describe MeetupGroup do
     describe "#events_between" do
       it "returns a list of events" do
-        feed = MeetupGroup.new(group_urlname: 'The-Foundation-Christchurch', key: 'secrettoken')
+        feed = MeetupGroup.new(group_urlname: 'The-Foundation-Christchurch',
+                               key: 'secrettoken',
+                               connection: Faraday.new)
         events = nil
 
         Timecop.freeze(2014, 5, 24) do
@@ -22,7 +24,9 @@ module Almanack::EventSource
       end
 
       it "handles a missing location" do
-        feed = MeetupGroup.new(group_urlname: 'adventurewellington', key: 'secrettoken')
+        feed = MeetupGroup.new(group_urlname: 'adventurewellington',
+                               key: 'secrettoken',
+                               connection: Faraday.new)
 
         Timecop.freeze(2014, 7, 23) do
           VCR.use_cassette('meetup-without-location') do

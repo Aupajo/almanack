@@ -21,9 +21,13 @@ module Almanack
     end
 
     def events_between(date_range)
-      event_sources.map do |event_source|
+      event_list = event_sources.map do |event_source|
         event_source.events_between(date_range)
-      end.flatten.sort_by(&:start_date)
+      end.flatten
+
+      event_list.sort_by do |event|
+        event.start_date.to_time
+      end
     end
 
     def ical_feed

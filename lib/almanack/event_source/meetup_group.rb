@@ -55,9 +55,10 @@ module Almanack
     class MeetupAPIRequest
       REQUIRED_OPTIONS = [:group_domain, :group_urlname, :group_id]
 
-      attr_accessor :options
+      attr_reader :options, :connection
 
       def initialize(options = {})
+        @connection = options.delete(:connection)
         @options = options
       end
 
@@ -82,8 +83,8 @@ module Almanack
       end
 
       def response
-        json = Net::HTTP.get(uri)
-        data = JSON.parse(json)
+        response = connection.get(uri)
+        data = JSON.parse(response.body)
 
         if data['problem']
           raise MeetupAPIError, data['problem']

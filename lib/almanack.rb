@@ -2,6 +2,7 @@ require "pathname"
 require "json"
 require "ri_cal"
 require "addressable/uri"
+require "faraday"
 
 require "almanack/version"
 require "almanack/configuration"

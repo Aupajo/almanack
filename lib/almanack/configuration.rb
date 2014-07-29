@@ -12,6 +12,10 @@ module Almanack
       reset!
     end
 
+    def connection
+      @connection ||= Faraday.new
+    end
+
     def reset!
       @theme = DEFAULT_THEME
       @days_lookahead = DEFAULT_DAYS_LOOKAHEAD
@@ -30,7 +34,7 @@ module Almanack
     end
 
     def add_ical_feed(url)
-      @event_sources << EventSource::IcalFeed.new(url)
+      @event_sources << EventSource::IcalFeed.new(url, connection: connection)
     end
 
     def add_events(events)
@@ -38,7 +42,7 @@ module Almanack
     end
 
     def add_meetup_group(options)
-      @event_sources << EventSource::MeetupGroup.new(options)
+      @event_sources << EventSource::MeetupGroup.new(options.merge(connection: connection))
     end
   end
 end

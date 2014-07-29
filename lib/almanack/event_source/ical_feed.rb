@@ -1,8 +1,9 @@
 module Almanack
   module EventSource
     class IcalFeed
-      def initialize(url)
+      def initialize(url, options = {})
         @url = url
+        @options = options
       end
 
       def events_between(date_range)
@@ -45,12 +46,16 @@ module Almanack
       end
 
       def entities
-        RiCal.parse_string(body)
+        RiCal.parse_string(response.body)
       end
 
-      def body
-        uri = URI(@url)
-        Net::HTTP.get(uri)
+      def connection
+        @options[:connection]
+      end
+
+      def response
+        uri = Addressable::URI.parse(@url)
+        connection.get(uri)
       end
 
     end
