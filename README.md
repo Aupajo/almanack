@@ -24,6 +24,10 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 * Rack-compatible (can be mounted inside a Rails app if needed)
 * Produces iCal feed for smartphone and desktop calendar apps to subscribe to
 
+## Video tutorial
+
+[![View on YouTube](http://i.imgur.com/UKHP8gr.png)](http://youtu.be/0tUcWHE0Zh0)
+
 ## Installation
 
 Run the following command:
