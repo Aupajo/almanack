@@ -26,7 +26,7 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 
 ## Video tutorial
 
-[![View on YouTube](http://i.imgur.com/UKHP8gr.png)](http://youtu.be/0tUcWHE0Zh0)
+[![View on YouTube](http://i.imgur.com/4ifJAXD.jpg)](http://youtu.be/0tUcWHE0Zh0)
 
 ## Installation
 
