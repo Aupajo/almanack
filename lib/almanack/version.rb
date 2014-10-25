@@ -1,6 +1,6 @@
 module Almanack
   CODENAME = "Garlick"
-  VERSION  = "1.0.4"
-  HOMEPAGE = "https://github.com/Aupajo/sinatra-gcal"
-  ISSUES   = "https://github.com/Aupajo/sinatra-gcal/issues"
+  VERSION  = "1.0.5"
+  HOMEPAGE = "https://github.com/Aupajo/almanack"
+  ISSUES   = "https://github.com/Aupajo/almanack/issues"
 end
