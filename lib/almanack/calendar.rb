@@ -2,11 +2,6 @@ require 'forwardable'
 
 module Almanack
   class Calendar
-    ONE_HOUR = 60 * 60
-    ONE_DAY = 24 * ONE_HOUR
-    ONE_MONTH = 30 * ONE_DAY
-    ONE_YEAR = 365 * ONE_DAY
-
     extend Forwardable
     def_delegators :@config, :event_sources, :title, :days_lookahead
 
