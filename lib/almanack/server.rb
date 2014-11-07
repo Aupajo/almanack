@@ -13,7 +13,7 @@ module Almanack
 
     set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
-    set :feed_path, "feed.ics"
+    set :feed_path, "feed"
 
     not_found do
       status 404
@@ -62,7 +62,7 @@ module Almanack
       erb :events
     end
 
-    get "/#{settings.feed_path}" do
+    get "/#{settings.feed_path}.ics" do
       content_type "text/calendar"
       Almanack.calendar.ical_feed
     end
