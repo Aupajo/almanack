@@ -11,7 +11,7 @@ module Almanack
         @ical ||= begin
           ical_component = RiCal.Calendar
 
-          calendar.events_between(now..max_time).each do |event|
+          calendar.events_between(now..lookahead).each do |event|
             ical_event = RiCal.Event
             ical_event.summary = event.title
             ical_event.dtstart = event.start_date.utc
@@ -36,8 +36,8 @@ module Almanack
 
       private
 
-      def max_time
-        now + ONE_YEAR
+      def lookahead
+        now + calendar.feed_lookahead * ONE_DAY
       end
 
       def default_event_duration

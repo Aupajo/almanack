@@ -60,5 +60,12 @@ module Almanack
       end
     end
 
+    describe "#feed_lookahead" do
+      it "delegates to the configuration's feed_lookahead" do
+        config = double(feed_lookahead: :delegated)
+        expect(Calendar.new(config).feed_lookahead).to eq(:delegated)
+      end
+    end
+
   end
 end

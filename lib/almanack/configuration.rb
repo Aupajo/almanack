@@ -4,9 +4,15 @@ module Almanack
 
     DEFAULT_THEME = "legacy"
     DEFAULT_DAYS_LOOKAHEAD = 30
+    DEFAULT_FEED_LOOKAHEAD = 365
 
     attr_reader :event_sources
-    attr_accessor :title, :theme, :theme_paths, :theme_root, :days_lookahead
+    attr_accessor :title,
+                  :theme,
+                  :theme_paths,
+                  :theme_root,
+                  :days_lookahead,
+                  :feed_lookahead
 
     def initialize
       reset!
@@ -19,6 +25,7 @@ module Almanack
     def reset!
       @theme = DEFAULT_THEME
       @days_lookahead = DEFAULT_DAYS_LOOKAHEAD
+      @feed_lookahead = DEFAULT_FEED_LOOKAHEAD
       @event_sources = []
 
       @theme_paths = [

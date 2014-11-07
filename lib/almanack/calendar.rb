@@ -3,7 +3,10 @@ require 'forwardable'
 module Almanack
   class Calendar
     extend Forwardable
-    def_delegators :@config, :event_sources, :title, :days_lookahead
+    def_delegators :@config, :event_sources,
+                             :title,
+                             :days_lookahead,
+                             :feed_lookahead
 
     def initialize(config)
       @config = config
