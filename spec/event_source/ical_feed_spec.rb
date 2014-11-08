@@ -23,5 +23,18 @@ module Almanack::EventSource
       end
     end
 
+    describe "#serialized_between" do
+      it "returns a hash containing attributes" do
+        source = IcalFeed.new 'url'
+
+        events = [double(serialized: :serialized_event)]
+        expect(source).to receive(:events_between).with(:date_range) { events }
+
+        expect(source.serialized_between(:date_range)).to eq({
+          events: [:serialized_event]
+        })
+      end
+    end
+
   end
 end

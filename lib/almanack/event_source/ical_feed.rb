@@ -12,6 +12,10 @@ module Almanack
         end
       end
 
+      def serialized_between(date_range)
+        { events: events_between(date_range).map(&:serialized) }
+      end
+
       private
 
       def each_ical_event(&block)
