@@ -8,7 +8,7 @@ module Almanack
       end
 
       def to_s
-        to_hash.to_json
+        serialized.to_json
       end
 
       def self.from(calendar)
@@ -17,8 +17,30 @@ module Almanack
 
       private
 
-      def to_hash
-        {}
+      def date_range
+        now..lookahead
+      end
+
+      def serialized
+        { event_sources: serialized_event_sources }
+      end
+
+      def serialized_event_sources
+        event_sources.map do |source|
+          source.serialized_between(date_range)
+        end
+      end
+
+      def event_sources
+        calendar.event_sources
+      end
+
+      def lookahead
+        now + calendar.feed_lookahead * ONE_DAY
+      end
+
+      def now
+        @now ||= Time.now
       end
     end
   end
