@@ -21,3 +21,5 @@ VCR.configure do |config|
   config.ignore_hosts 'codeclimate.com'
   config.hook_into :webmock
 end
+
+WebMock.disable_net_connect!(:allow => "codeclimate.com")
