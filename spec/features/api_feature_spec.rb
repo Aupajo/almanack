@@ -9,10 +9,16 @@ describe "API", :feature do
       expect(last_response['Content-Type']).to eq 'application/json'
     end
 
-    it "reutrns the JSON feed" do
+    it "returns the JSON feed" do
       allow(Almanack.calendar).to receive(:json_feed) { "feed" }
       get '/feed.json'
       expect(last_response.body).to eq("feed")
+    end
+
+    it "supports JSONP" do
+      allow(Almanack.calendar).to receive(:json_feed) { "feed" }
+      get '/feed.json?callback=custom'
+      expect(last_response.body).to include("custom(feed)")
     end
   end
 end

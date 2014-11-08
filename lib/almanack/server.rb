@@ -1,3 +1,4 @@
+require "rack/contrib"
 require "sinatra"
 require "sinatra/reloader"
 require "sass"
@@ -13,6 +14,8 @@ module Almanack
     set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
     set :feed_path, "feed"
+
+    use Rack::JSONP
 
     configure :development do
       register Sinatra::Reloader
