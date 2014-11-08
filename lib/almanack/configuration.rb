@@ -40,16 +40,20 @@ module Almanack
       root || raise(ThemeNotFound, "Could not find theme #{theme} in #{paths}")
     end
 
+    def add_event_source(source)
+      @event_sources << source
+    end
+
     def add_ical_feed(url)
-      @event_sources << EventSource::IcalFeed.new(url, connection: connection)
+      add_event_source EventSource::IcalFeed.new(url, connection: connection)
     end
 
     def add_events(events)
-      @event_sources << EventSource::Static.new(events)
+      add_event_source EventSource::Static.new(events)
     end
 
     def add_meetup_group(options)
-      @event_sources << EventSource::MeetupGroup.new(options.merge(connection: connection))
+      add_event_source EventSource::MeetupGroup.new(options.merge(connection: connection))
     end
   end
 end
