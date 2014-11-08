@@ -24,7 +24,7 @@ module Almanack
       end.flatten
 
       event_list.sort_by do |event|
-        event.start_date.to_time
+        event.start_time.to_time
       end
     end
 

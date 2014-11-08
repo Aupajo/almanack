@@ -12,13 +12,13 @@ describe "Consolidated iCal feed", :feature do
     Almanack.reset!
 
     Almanack.config.add_events [
-      { title: "Basic", start_date: now },
-      { title: "Almost a year away", start_date: now + 364 * 24 * 60 * 60 },
-      { title: "Over a year away", start_date: now + 366 * 24 * 60 * 60 },
+      { title: "Basic", start_time: now },
+      { title: "Almost a year away", start_time: now + 364 * 24 * 60 * 60 },
+      { title: "Over a year away", start_time: now + 366 * 24 * 60 * 60 },
       {
         title: "Complex",
-        start_date: now,
-        end_date: now + 30 * 24 * 60 * 60,
+        start_time: now,
+        end_time: now + 30 * 24 * 60 * 60,
         description: "Body",
         location: "CA"
       }

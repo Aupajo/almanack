@@ -7,7 +7,7 @@ module Almanack
 
       def events_between(date_range)
         events.select do |event|
-          event.start_date >= date_range.min && event.start_date <= date_range.max
+          event.start_time >= date_range.min && event.start_time <= date_range.max
         end
       end
 
@@ -29,8 +29,8 @@ module Almanack
 
         Event.new(
           title: event_name,
-          start_date: start_time,
-          end_date: end_time,
+          start_time: start_time,
+          end_time: end_time,
           description: result['description'],
           location: location_from_venue(result['venue']),
           url: result['event_url']

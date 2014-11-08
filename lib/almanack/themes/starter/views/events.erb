@@ -4,8 +4,8 @@
   <% calendar.events.each do |event| %>
     <div class="event">
       <div class="date">
-        <div class="month"><%= event.start_date.strftime('%a') %></div>
-        <div class="day"><%= event.start_date.strftime('%d') %></div>
+        <div class="month"><%= event.start_time.strftime('%a') %></div>
+        <div class="day"><%= event.start_time.strftime('%d') %></div>
       </div>
       <div class="details">
         <h3 class="title"><%= event.title %></h3>

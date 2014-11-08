@@ -7,9 +7,9 @@ describe "Viewing a calendar", :feature do
     now = Time.now
 
     Almanack.config.add_events [
-      { title: "Hogswatch", start_date: now },
-      { title: "Soul Cake Tuesday", start_date: now + 10 * 24 * 60 * 60 },
-      { title: "Eve of Small Gods", start_date: now + 30 * 24 * 60 * 60 },
+      { title: "Hogswatch", start_time: now },
+      { title: "Soul Cake Tuesday", start_time: now + 10 * 24 * 60 * 60 },
+      { title: "Eve of Small Gods", start_time: now + 30 * 24 * 60 * 60 },
     ]
 
     Timecop.freeze(now) do

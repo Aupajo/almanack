@@ -9,9 +9,9 @@ module Almanack::EventSource
         tomorrow = now + 1
 
         source = Static.new [
-          { title: 'Yesterday', start_date: yesterday },
-          { title: 'Today', start_date: now },
-          { title: 'Tomorrow', start_date: tomorrow }
+          { title: 'Yesterday', start_time: yesterday },
+          { title: 'Today', start_time: now },
+          { title: 'Tomorrow', start_time: tomorrow }
         ]
 
         expect(source.events_between(yesterday..tomorrow).map(&:title)).to eq(%w( Yesterday Today Tomorrow ))

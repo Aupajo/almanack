@@ -38,8 +38,8 @@ module Almanack
       def event_from(occurrence)
         Event.new(
           title: occurrence.summary,
-          start_date: occurrence.dtstart,
-          end_date: occurrence.dtend,
+          start_time: occurrence.dtstart,
+          end_time: occurrence.dtend,
           description: occurrence.description,
           location: occurrence.location
         )

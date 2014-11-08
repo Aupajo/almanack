@@ -42,9 +42,9 @@ module Almanack
 
         config = Configuration.new
         config.add_events [
-          { title: 'Today', start_date: today },
-          { title: 'Yesterday', start_date: yesterday },
-          { title: 'Tomorrow', start_date: tomorrow },
+          { title: 'Today', start_time: today },
+          { title: 'Yesterday', start_time: yesterday },
+          { title: 'Tomorrow', start_time: tomorrow },
         ]
 
         calendar = Calendar.new(config)

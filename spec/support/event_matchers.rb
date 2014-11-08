@@ -29,7 +29,7 @@ module EventMatchers
 
   matcher :be_in_order do
     match do |events|
-      events == events.sort_by(&:start_date)
+      events == events.sort_by(&:start_time)
     end
 
     failure_message do |events|
