@@ -98,5 +98,24 @@ module Almanack
       end
     end
 
+    describe "#serialized" do
+      it "returns attributes as a hash" do
+        wed = Time.new(2014, 01, 01)
+        thu = Time.new(2014, 01, 02)
+
+        event = Event.new(title: "Hogswatch",
+                          start_time: wed,
+                          end_time: thu,
+                          arbitrary: true)
+
+        expect(event.serialized).to eq({
+          title: "Hogswatch",
+          start_time: wed.iso8601,
+          end_time: thu.iso8601,
+          arbitrary: true
+        })
+      end
+    end
+
   end
 end

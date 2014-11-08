@@ -3,6 +3,7 @@ module Almanack
     class MeetupGroup
       def initialize(options = {})
         @request_options = options
+        @group_properties = {}
       end
 
       def events_between(date_range)
@@ -11,11 +12,31 @@ module Almanack
         end
       end
 
+      def serialized_between(date_range)
+        # TODO `events` must be called before @group_properties is accessed
+        serialized_events = events_between(date_range).map(&:serialized)
+        @group_properties.merge(events: serialized_events)
+      end
+
       private
 
       def events
-        request = MeetupAPIRequest.new(@request_options.clone)
-        request.results.map { |result| event_from(result) }
+        results = MeetupAPIRequest.new(@request_options.clone).results
+        record_group_details_from results
+        results.map { |result| event_from(result) }
+      end
+
+      def record_group_details_from(results)
+        first_result = results.first
+        return if !first_result
+
+        group = first_result['group']
+        return if !group
+
+        @group_properties = {
+          name: group['name'],
+          url: "http://www.meetup.com/" + group['urlname']
+        }
       end
 
       def event_from(result)

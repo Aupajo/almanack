@@ -16,7 +16,7 @@ module Almanack
       end
 
       def self.from(calendar)
-        self.new(calendar).to_s
+        self.new(calendar)
       end
 
       private

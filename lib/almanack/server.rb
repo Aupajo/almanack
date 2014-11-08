@@ -1,3 +1,4 @@
+require "rack/contrib"
 require "sinatra"
 require "sinatra/reloader"
 require "sass"
@@ -9,10 +10,12 @@ module Almanack
     require "almanack/server/environment"
 
     include Almanack::ServerContext::Environment
-    
+
     set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
     set :feed_path, "feed"
+
+    use Rack::JSONP
 
     configure :development do
       register Sinatra::Reloader
@@ -43,6 +46,11 @@ module Almanack
     get "/#{settings.feed_path}.ics" do
       content_type "text/calendar"
       Almanack.calendar.ical_feed
+    end
+
+    get "/#{settings.feed_path}.json" do
+      content_type :json
+      Almanack.calendar.json_feed
     end
 
     get "/stylesheets/:name" do

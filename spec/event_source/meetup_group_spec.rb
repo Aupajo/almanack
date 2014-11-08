@@ -38,5 +38,26 @@ module Almanack::EventSource
       end
     end
 
+    describe "#serialized_between" do
+      it "returns a hash containing attributes" do
+        feed = MeetupGroup.new(group_urlname: 'The-Foundation-Christchurch',
+                               key: 'secrettoken',
+                               connection: Faraday.new)
+        serialized = nil
+
+        Timecop.freeze(2014, 5, 24) do
+          VCR.use_cassette('meetup') do
+            from = Time.now
+            to = from + 30 * 24 * 60 * 60
+            serialized = feed.serialized_between(from..to)
+          end
+        end
+
+        expect(serialized[:events].length).to eq 5
+        expect(serialized[:name]).to eq("The Foundation")
+        expect(serialized[:url]).to eq("http://www.meetup.com/The-Foundation-Christchurch")
+      end
+    end
+
   end
 end
