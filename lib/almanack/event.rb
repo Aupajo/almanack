@@ -32,6 +32,12 @@ module Almanack
       read_attribute :end_time, fallback: :end_date
     end
 
+    def serialized
+      each_pair.with_object({}) do |(attr, _), hash|
+        hash[attr] = send(attr)
+      end
+    end
+
     private
 
     def deprecated(older_method, options = {})
