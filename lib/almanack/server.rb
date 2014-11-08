@@ -9,6 +9,10 @@ module Almanack
     require "almanack/server/environment"
 
     include Almanack::ServerContext::Environment
+    
+    set :root, -> { Almanack.config.theme_root }
+    set :protection, except: :frame_options
+    set :feed_path, "feed"
 
     configure :development do
       register Sinatra::Reloader
@@ -18,9 +22,9 @@ module Almanack
       include Almanack::ServerContext::Helpers
     end
 
-    set :root, -> { Almanack.config.theme_root }
-    set :protection, except: :frame_options
-    set :feed_path, "feed"
+    before do
+      register_sass_loadpaths!
+    end
 
     not_found do
       status 404
@@ -30,10 +34,6 @@ module Almanack
     error do
       status 500
       erb :error
-    end
-
-    before do
-      register_sass_loadpaths!
     end
 
     get "/" do
