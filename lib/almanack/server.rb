@@ -45,6 +45,11 @@ module Almanack
       Almanack.calendar.ical_feed
     end
 
+    get "/#{settings.feed_path}.json" do
+      content_type :json
+      {}.to_json
+    end
+
     get "/stylesheets/:name" do
       content_type :css
       auto_render_asset params[:name], within: "stylesheets"
