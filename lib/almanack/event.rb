@@ -42,15 +42,17 @@ module Almanack
     end
 
     def read_attribute(newer_method, options = {})
-      fallback = options.delete(:fallback)
-      
-      if self[fallback] && self[newer_method]
-        raise "Both #{fallback} and #{newer_method} properties are set, please use #{newer_method} only instead"
-      elsif self[newer_method]
-        self[newer_method]
-      else
-        warn "Deprecated event property #{fallback} is set; set #{newer_method} property instead"
-        self[fallback]
+      older_method = options.delete(:fallback)
+      newer_value = self[newer_method]
+      fallback_value = self[older_method]
+
+      if fallback_value && newer_value
+        raise "Both #{older_method} and #{newer_method} properties are set, please use #{newer_method} only instead"
+      elsif newer_value
+        newer_value
+      elsif fallback_value
+        warn "Deprecated event property #{older_method} is set; set #{newer_method} property instead"
+        fallback_value
       end
     end
 

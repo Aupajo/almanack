@@ -91,6 +91,11 @@ module Almanack
         expect { event.end_date }.to raise_error
         expect { event.end_time }.to raise_error
       end
+
+      it "does not output a deprecation warning when using end_time if neither end_date or end_time is set" do
+        event = Event.new
+        expect { event.end_time }.not_to output.to_stderr
+      end
     end
 
   end
