@@ -9,10 +9,10 @@ describe "API", :feature do
       expect(last_response['Content-Type']).to eq 'application/json'
     end
 
-    it "is empty by default" do
+    it "reutrns the JSON feed" do
+      allow(Almanack.calendar).to receive(:json_feed) { "feed" }
       get '/feed.json'
-      parsed_json = JSON.parse(last_response.body)
-      expect(parsed_json).to eq({})
+      expect(last_response.body).to eq("feed")
     end
   end
 end

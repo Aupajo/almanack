@@ -31,5 +31,9 @@ module Almanack
     def ical_feed
       Representation::IcalFeed.from(self)
     end
+
+    def json_feed
+      Representation::JSONFeed.from(self)
+    end
   end
 end

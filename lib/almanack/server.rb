@@ -9,7 +9,7 @@ module Almanack
     require "almanack/server/environment"
 
     include Almanack::ServerContext::Environment
-    
+
     set :root, -> { Almanack.config.theme_root }
     set :protection, except: :frame_options
     set :feed_path, "feed"
@@ -47,7 +47,7 @@ module Almanack
 
     get "/#{settings.feed_path}.json" do
       content_type :json
-      {}.to_json
+      Almanack.calendar.json_feed
     end
 
     get "/stylesheets/:name" do
