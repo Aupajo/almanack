@@ -16,21 +16,22 @@ module Almanack::Representation
       end
 
       it "returns empty event sources by default" do
-        expect(parsed_json).to eq({ "event_sources" => [] })
+        expect(parsed_json).to eq({ "eventSources" => [] })
       end
 
       it "returns event sources" do
         Almanack.config.add_events [
-          { title: "Basic event", start_time: Time.now }
+          { title: "Basic event", start_time: Time.now, custom_data: 'present' }
         ]
 
         expect(parsed_json).to eq({
-          "event_sources" => [
+          "eventSources" => [
             {
               "events" => [
                 {
                   "title" => "Basic event",
-                  "start_time" => Time.now.iso8601
+                  "startTime" => Time.now.iso8601,
+                  "customData" => 'present'
                 }
               ]
             }

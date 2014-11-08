@@ -8,7 +8,9 @@ module Almanack
       end
 
       def to_s
-        serialized.to_json
+        json_friendly = SerializedTransformation.new(serialized)
+        json_friendly.key { |key| camelize(key.to_s) }
+        json_friendly.apply.to_json
       end
 
       def self.from(calendar)
@@ -16,6 +18,12 @@ module Almanack
       end
 
       private
+
+      def camelize(string)
+        string.split('_').map.with_index do |part, index|
+          index.zero? ? part : part.capitalize
+        end.join
+      end
 
       def date_range
         now..lookahead
