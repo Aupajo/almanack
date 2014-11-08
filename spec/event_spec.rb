@@ -110,8 +110,8 @@ module Almanack
 
         expect(event.serialized).to eq({
           title: "Hogswatch",
-          start_time: wed,
-          end_time: thu,
+          start_time: wed.iso8601,
+          end_time: thu.iso8601,
           arbitrary: true
         })
       end

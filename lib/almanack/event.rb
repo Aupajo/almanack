@@ -34,11 +34,16 @@ module Almanack
 
     def serialized
       each_pair.with_object({}) do |(attr, _), hash|
-        hash[attr] = send(attr)
+        hash[attr] = serialize_attribute(attr)
       end
     end
 
     private
+
+    def serialize_attribute(attribute)
+      value = send(attribute)
+      value.is_a?(Time) ? value.iso8601 : value
+    end
 
     def deprecated(older_method, options = {})
       newer_method = options.delete(:newer_method)

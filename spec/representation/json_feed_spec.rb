@@ -12,7 +12,7 @@ module Almanack::Representation
 
     describe ".from" do
       around do |test|
-        Timecop.freeze('2014-11-08 18:49:12 +1300', &test)
+        Timecop.freeze(Time.now, &test)
       end
 
       it "returns empty event sources by default" do
@@ -30,7 +30,7 @@ module Almanack::Representation
               "events" => [
                 {
                   "title" => "Basic event",
-                  "start_time" => '2014-11-08 18:49:12 +1300'
+                  "start_time" => Time.now.iso8601
                 }
               ]
             }
