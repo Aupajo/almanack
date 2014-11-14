@@ -37,7 +37,7 @@ module Almanack
     end
 
     def recurse(entity)
-      cloned = case entity
+      case entity
       when Array
         entity.map { |child| recurse(child) }
       when Hash
