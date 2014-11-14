@@ -35,11 +35,13 @@ module Almanack
     def new(path)
       @path = Pathname(path).cleanpath
 
-      directory "templates/new", path
+      directory "templates/new", @path
 
       if options[:git]
         template('templates/gitignore', @path.join(".gitignore"))
       end
+
+      create_file @path.join('tmp/.keep')
 
       inside @path do
         say_status :installing, "bundler dependencies"

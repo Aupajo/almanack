@@ -85,5 +85,29 @@ module Almanack
       end
     end
 
+    describe "#cache_expiry" do
+      it "is 15 minutes by default" do
+        expect(Configuration.new.cache_expiry).to eq(900)
+      end
+
+      it "can be set" do
+        config = Configuration.new
+        config.cache_expiry = 3600
+        expect(config.cache_expiry).to eq(3600)
+      end
+    end
+
+    describe "#cache_responses" do
+      it "is enabled by default" do
+        expect(Configuration.new.cache_responses).to be(false)
+      end
+
+      it "can be disabled" do
+        config = Configuration.new
+        config.cache_responses = true
+        expect(config.cache_responses).to be(true)
+      end
+    end
+
   end
 end

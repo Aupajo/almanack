@@ -3,6 +3,8 @@ require "json"
 require "ri_cal"
 require "addressable/uri"
 require "faraday"
+require "faraday_middleware"
+require "active_support/cache"
 
 require "almanack/base"
 require "almanack/version"
