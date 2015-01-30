@@ -20,8 +20,8 @@ module Almanack
 
     def events_between(date_range)
       event_list = event_sources.map do |event_source|
-        event_source.events_between(date_range)
-      end.flatten
+        Thread.new { event_source.events_between(date_range) }
+      end.map(&:value).flatten
 
       event_list.sort_by do |event|
         event.start_time.to_time
