@@ -14,6 +14,18 @@ module Almanack
       formatted
     end
 
+    def title
+      self[:title].force_encoding('UTF-8')
+    end
+
+    def location
+      self[:location].force_encoding('UTF-8')
+    end
+
+    def description
+      self[:description].force_encoding('UTF-8')
+    end
+
     # Deprecated in favour of start_time
     def start_date
       deprecated :start_date, newer_method: :start_time
