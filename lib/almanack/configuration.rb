@@ -25,6 +25,7 @@ module Almanack
 
     def connection
       @connection ||= Faraday.new do |conn|
+        conn.use FaradayMiddleware::FollowRedirects
         conn.response(:caching) { cache_store } if cache_responses
         conn.adapter Faraday.default_adapter
       end
