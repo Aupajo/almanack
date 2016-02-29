@@ -15,15 +15,15 @@ module Almanack
     end
 
     def title
-      self[:title].force_encoding('UTF-8')
+      safely_encoded(:title)
     end
 
     def location
-      self[:location].force_encoding('UTF-8')
+      safely_encoded(:location)
     end
 
     def description
-      self[:description].force_encoding('UTF-8')
+      safely_encoded(:description)
     end
 
     # Deprecated in favour of start_time
@@ -51,6 +51,10 @@ module Almanack
     end
 
     private
+
+    def safely_encoded(attr)
+      self[attr].try(:force_encoding, 'UTF-8')
+    end
 
     def serialize_attribute(attribute)
       value = send(attribute)
