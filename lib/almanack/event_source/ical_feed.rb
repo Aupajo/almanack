@@ -50,7 +50,7 @@ module Almanack
       end
 
       def entities
-        RiCal.parse_string(response.body.force_encoding('utf-8'))
+        RiCal.parse_string(response.body.force_encoding('UTF-8'))
       end
 
       def connection

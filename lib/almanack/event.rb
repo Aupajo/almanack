@@ -15,15 +15,15 @@ module Almanack
     end
 
     def title
-      self[:title].force_encoding('UTF-8')
+      self[:title].present? ? self[:title].force_encoding('UTF-8') : ''
     end
 
     def location
-      self[:location].force_encoding('UTF-8')
+      self[:location].present? ? self[:location].force_encoding('UTF-8') : ''
     end
 
     def description
-      self[:description].force_encoding('UTF-8')
+      self[:description].present? ? self[:description].force_encoding('UTF-8') : ''
     end
 
     # Deprecated in favour of start_time
