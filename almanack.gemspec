@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rack-contrib"
   spec.add_dependency "activesupport"
 
-  spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
@@ -37,5 +36,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "nokogiri"
-  spec.add_development_dependency "codeclimate-test-reporter"
 end

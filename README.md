@@ -1,7 +1,6 @@
 # Almanack
 
 [![Build Status](https://travis-ci.org/Aupajo/almanack.svg)](https://travis-ci.org/Aupajo/almanack)
-[![Code Climate](https://codeclimate.com/github/Aupajo/almanack.png)](https://codeclimate.com/github/Aupajo/almanack)
 [![Gem Version](https://badge.fury.io/rb/almanack.svg)](http://badge.fury.io/rb/almanack)
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
