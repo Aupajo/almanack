@@ -1,6 +1,5 @@
-require 'spec_helper'
 
-describe "Sass rendering", :feature do
+RSpec.describe "Sass rendering", :feature do
   before { Almanack.reset! }
 
   it "can import sass" do

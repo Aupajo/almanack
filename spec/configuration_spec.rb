@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack
-  describe Configuration do
+  RSpec.describe Configuration do
 
     describe "#title" do
       it "can be set and accessed" do

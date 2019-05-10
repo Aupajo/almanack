@@ -1,6 +1,5 @@
-require 'spec_helper'
 
-describe "Viewing a calendar", :feature do
+RSpec.describe "Viewing a calendar", :feature do
   before { Almanack.reset! }
 
   it "displays all upcoming events" do

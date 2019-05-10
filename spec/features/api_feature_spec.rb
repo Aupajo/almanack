@@ -1,6 +1,5 @@
-require 'spec_helper'
 
-describe "API", :feature do
+RSpec.describe "API", :feature do
   before { Almanack.reset! }
 
   describe "/feed.json" do

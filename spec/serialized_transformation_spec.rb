@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack
-  describe SerializedTransformation do
+  RSpec.describe SerializedTransformation do
     let(:fact_book) do
       {
         title: "Facts of the World",

@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack::EventSource
-  describe Static do
+  RSpec.describe Static do
     let(:yesterday) { now - 1 }
     let(:now) { Time.now }
     let(:tomorrow) { now + 1 }

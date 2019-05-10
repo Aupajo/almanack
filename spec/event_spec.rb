@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack
-  describe Event do
+  RSpec.describe Event do
 
     it "has a title" do
       event = Event.new(title: "Music with rocks in")

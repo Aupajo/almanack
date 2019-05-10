@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack::Representation
-  describe JSONFeed do
+  RSpec.describe JSONFeed do
 
     let(:calendar) { Almanack.calendar }
     let(:parsed_json) { JSON.parse JSONFeed.from(calendar).to_s }

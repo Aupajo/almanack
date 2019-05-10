@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack
-  describe Calendar do
+  RSpec.describe Calendar do
 
     describe "#title" do
       it "delegates to the config's title" do

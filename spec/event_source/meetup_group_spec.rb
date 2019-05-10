@@ -1,7 +1,6 @@
-require 'spec_helper'
 
 module Almanack::EventSource
-  describe MeetupGroup do
+  RSpec.describe MeetupGroup do
     describe "#events_between" do
       it "returns a list of events" do
         feed = MeetupGroup.new(group_urlname: 'The-Foundation-Christchurch',

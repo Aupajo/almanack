@@ -1,6 +1,5 @@
-require 'spec_helper'
 
-describe "Consolidated iCal feed", :feature do
+RSpec.describe "Consolidated iCal feed", :feature do
   let(:now) { Time.now }
   let(:parsed_feed) { RiCal.parse_string(Almanack.calendar.ical_feed) }
   let(:parsed_cal) { parsed_feed.first }
