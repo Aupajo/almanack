@@ -27,9 +27,19 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 
 ## Installation
 
-Run the following command:
+Almanack is cryptographically signed. You can install it like any other gem, but you can also do so in a way that verifies the gem hasn't been tampered with.
 
-    gem install almanack
+Add my public key (if you haven’t already) as a trusted certificate:
+
+    gem cert --add <(curl -Ls https://raw.github.com/aupajo/almanack/master/certs/aupajo.pem)
+
+Then install the gem:
+
+    gem install almanack -P HighSecurity
+
+All my dependencies are cryptographically signed, so you can use the `HighSecurity` option. [Read more](http://docs.seattlerb.org/rubygems/Gem/Security.html).
+
+Checksums for released gems can be found in `checksums`.
 
 ## Creating a calendar
 
@@ -87,7 +97,7 @@ is already initialized for you when you run `almanack new`):
     git add .
     git commit -m "My awesome calendar"
 
-With the [Heroku Toolbelt](https://toolbelt.heroku.com) installed:
+With the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed:
 
     almanack deploy my-awesome-calendar
 
@@ -99,7 +109,7 @@ Subsequent commits can be deployed with just:
 
 ## Contributing
 
-## Getting started
+### Getting started
 
 1. Clone the repository
 2. Run `bin/setup`
