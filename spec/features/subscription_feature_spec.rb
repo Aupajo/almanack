@@ -56,4 +56,35 @@ RSpec.describe "Consolidated iCal feed", :feature do
     expect(last_response.body).to eq("feed")
     expect(last_response.headers["Content-Type"]).to include("text/calendar")
   end
+
+  it "constructs a feed URL based on the scheme, host, port and settings" do
+    random_port = rand(2048..9999)
+    random_domain = "calendar#{rand(1..99)}.example.org"
+    random_path = "/custom/#{rand(1..99)}/feed"
+    scheme = %i( http https ).sample
+
+    original_feed_path = app.settings.feed_path
+    app.settings.feed_path = random_path
+
+    get("/", nil,
+      'HTTP_HOST' => random_domain,
+      'SERVER_PORT' => random_port,
+      'HTTPS' => (scheme == :https ? 'on' : 'off')
+    )
+
+    expect(last_response.body)
+      .to include("#{scheme}://#{random_domain}:#{random_port}#{random_path}.ics")
+
+    app.settings.feed_path = original_feed_path
+  end
+
+  it "has a sensible default for an HTTP feed URL" do
+    get("/", nil, 'HTTPS' => 'off', 'SERVER_PORT' => '80')
+    expect(last_response.body).to include("http://example.org/feed.ics")
+  end
+
+  it "has a sensible default for an HTTPS feed URL" do
+    get("/", nil, 'HTTPS' => 'on', 'SERVER_PORT' => '443')
+    expect(last_response.body).to include("https://example.org/feed.ics")
+  end
 end
