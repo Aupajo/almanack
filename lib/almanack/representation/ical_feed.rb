@@ -32,23 +32,11 @@ module Almanack
       end
 
       def ical_event_for(event)
-        ical_event = RiCal.Event
-        ical_event.summary = event.title
-        ical_event.dtstart = event.start_time.utc
-        ical_event.dtend = (event.end_time || event.start_time + default_event_duration ).utc
-        ical_event.description = event.description if event.description
-        ical_event.location = event.location if event.location
-        ical_event
+        BuiltIcalEvent.for(event)
       end
 
       def lookahead
         now + calendar.feed_lookahead * ONE_DAY
-      end
-
-      def default_event_duration
-        # Three hours is the duration for events missing end dates, a
-        # recommendation suggested by Meetup.com.
-        3 * ONE_HOUR
       end
 
       def now

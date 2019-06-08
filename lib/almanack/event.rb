@@ -3,12 +3,18 @@ require 'ostruct'
 module Almanack
   class Event < OpenStruct
     def formatted_date
-      formatted = "#{formatted_day(start_time)} at #{formatted_time(start_time)}"
+      warn "formatted_date is deprecated, please use formatted_duration instead"
+      formatted_duration
+    end
+
+    def formatted_duration
+      formatted = "#{formatted_day(start_time)}"
+      formatted << " at #{formatted_time(start_time)}" unless start_time.is_a?(Date)
 
       if end_time
-        formatted << " to "
+        formatted << " to " unless is_date_ending_on_same_day?
         formatted << "#{formatted_day(end_time)} at " unless ends_on_same_day?
-        formatted << formatted_time(end_time)
+        formatted << formatted_time(end_time) unless end_time.is_a?(Date)
       end
 
       formatted
@@ -77,6 +83,10 @@ module Almanack
         warn "Deprecated event property #{older_method} is set; set #{newer_method} property instead"
         fallback_value
       end
+    end
+
+    def is_date_ending_on_same_day?
+      end_time.is_a?(Date) && ends_on_same_day?
     end
 
     def ends_on_same_day?
