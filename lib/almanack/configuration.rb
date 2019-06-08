@@ -58,6 +58,10 @@ module Almanack
       add_event_source EventSource::IcalFeed.new(url, connection: connection)
     end
 
+    def add_ical(io)
+      add_event_source EventSource::Ical.from(io)
+    end
+
     def add_events(events)
       add_event_source EventSource::Static.new(events)
     end

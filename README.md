@@ -61,13 +61,20 @@ By default, your calendar will run on http://localhost:9292.
 See examples inside `config.ru` for iCal feeds, Meetup.com, or static events.
 
 ```ruby
-Almanack.config do |c|
-  c.title = 'My Calendar'
-  c.theme = 'my-custom-theme'
-  c.days_lookahead = 30
-  c.add_ical_feed 'http://example.org/events.ics'
-  c.add_ical_feed 'http://example.org/more-events.ics'
-  c.add_meetup_group group_urlname: 'Christchurch-Ruby-Group', key: 'mysecretkey'
+Almanack.config do |config|
+  config.title = 'My Calendar'
+  config.theme = 'my-custom-theme'
+  config.days_lookahead = 30
+
+  # Combine sources from multiple iCal feeds
+  config.add_ical_feed 'http://example.org/events.ics'
+  config.add_ical_feed 'http://example.org/more-events.ics'
+
+  # Include a downloaded iCal
+  config.add_ical Pathname('downloaded-calendar.ical')
+
+  # Include Meetup events
+  config.add_meetup_group group_urlname: 'Christchurch-Ruby-Group', key: 'mysecretkey'
 end
 ```
 

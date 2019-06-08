@@ -36,6 +36,17 @@ RSpec.describe "Viewing a calendar", :feature do
     expect(last_response).to have_event_on_page("Coffee & Jam")
   end
 
+  it "displays events from an iCal IO" do
+    fixture = fixture_path('cal-with-dates.ical')
+
+    Almanack.config.add_ical(fixture)
+
+    Timecop.freeze(1962, 2, 10) { get "/" }
+
+    expect(last_response).to have_event_on_page("MA-6 First US Manned Spaceflight")
+    expect(last_response.body).to include("February 20 1962")
+  end
+
   it "allows being embedded in an iframe" do
     get "/"
     expect(last_response.headers).to_not have_key("X-Frame-Options")
