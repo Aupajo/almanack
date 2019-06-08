@@ -73,6 +73,18 @@ end
 
 **Note:** You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key) to use Meetup.
 
+### Time zone
+
+To set your time zone, set your system's `TZ` environment variable.
+
+```bash
+TZ=Pacific/Auckland
+```
+
+On Heroku, you can do this with:
+
+    heroku config:set TZ=Pacific/Auckland
+
 ## Custom themes
 
 Inside your project, you can generate a new theme with:
