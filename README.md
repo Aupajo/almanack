@@ -2,12 +2,13 @@
 
 [![Build Status](https://travis-ci.org/Aupajo/almanack.svg)](https://travis-ci.org/Aupajo/almanack)
 [![Gem Version](https://badge.fury.io/rb/almanack.svg)](http://badge.fury.io/rb/almanack)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Aupajo/almanack/tree/heroku-button)
 
 A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
 ![Sinatra GCal example](http://i.imgur.com/odgyR.png)
 
-See a demo running at [http://christchurch.events.geek.nz](http://christchurch.events.geek.nz)
+See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.herokuapp.com/)
 
 ## Features
 
@@ -20,6 +21,14 @@ See a demo running at [http://christchurch.events.geek.nz](http://christchurch.e
 * Server optional (you can use the underlying calendar library by itself)
 * Rack-compatible (can be mounted inside a Rails app if needed)
 * Produces iCal feed for smartphone and desktop calendar apps to subscribe to
+
+## Simple setup
+
+This option can host your calendar for free light use.
+
+[Sign up for a free Heroku account](https://heroku.com) and click the following button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Aupajo/almanack/tree/heroku-button)
 
 ## Video tutorial
 
