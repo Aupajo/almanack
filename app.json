@@ -1,4 +1,8 @@
 {
+  "name": "Almanack",
+  "description": "Combine iCal, Google Calendar, and Meetup.com events into a single calendar with a public website and calendar subscription feed.",
+  "repository": "https://github.com/Aupajo/almanack",
+  "keywords": ["calendar", "events", "meetup", "gcal" , "ical", "web", "feed", "rss"],
   "buildpacks": [
     { "url": "heroku/ruby" }
   ],
