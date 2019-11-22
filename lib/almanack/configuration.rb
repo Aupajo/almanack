@@ -67,7 +67,7 @@ module Almanack
     end
 
     def add_meetup_group(options)
-      add_event_source EventSource::MeetupGroup.new(options.merge(connection: connection))
+      fail "Unfortunately, due to Meetup's changes to their API, this integration is no longer supported. See https://github.com/Aupajo/almanack/issues/36 for more information."
     end
 
     def cache_store

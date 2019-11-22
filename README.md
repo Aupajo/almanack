@@ -4,7 +4,7 @@
 [![Gem Version](https://badge.fury.io/rb/almanack.svg)](http://badge.fury.io/rb/almanack)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Aupajo/almanack/tree/heroku-button)
 
-A calendar that combines events from different sources (such as Google Calendar, Meetup.com, and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
+A calendar that combines events from different sources (such as Google Calendar and iCal feeds), and can be hosted for free on [Heroku](http://heroku.com).
 
 ![Sinatra GCal example](http://i.imgur.com/odgyR.png)
 
@@ -14,7 +14,7 @@ See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.her
 
 * Aggregate multiple calendars together into one stream
 * Supports iCal feeds (incuding Google Calendars)
-* Supports Meetup.com groups
+* ~Supports Meetup.com groups~ (see https://github.com/Aupajo/almanack/issues/36)
 * Just supply a hash to create any arbitrary event
 * Supports being freely hosted on Heroku
 * 100% customisable themes with Sass and CoffeeScript support
@@ -67,7 +67,7 @@ By default, your calendar will run on http://localhost:9292.
 
 ## Configuration
 
-See examples inside `config.ru` for iCal feeds, Meetup.com, or static events.
+See examples inside `config.ru` for iCal feeds, or static events.
 
 ```ruby
 Almanack.config do |config|
@@ -81,13 +81,8 @@ Almanack.config do |config|
 
   # Include a downloaded iCal
   config.add_ical Pathname('downloaded-calendar.ical')
-
-  # Include Meetup events
-  config.add_meetup_group group_urlname: 'Christchurch-Ruby-Group', key: 'mysecretkey'
 end
 ```
-
-**Note:** You'll need your [Meetup.com API key](https://secure.meetup.com/meetup_api/key) to use Meetup.
 
 ### Time zone
 
