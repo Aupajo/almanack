@@ -35,6 +35,19 @@ module Almanack::EventSource
           end
         end
       end
+
+      it "handles unauthorized errors" do
+        feed = MeetupGroup.new(group_urlname: 'The-Foundation-Christchurch',
+                               key: 'secrettoken',
+                               connection: Faraday.new)
+
+        VCR.use_cassette('meetup-unauthorized') do
+          from = Time.now
+          to = from + 30 * 24 * 60 * 60
+          expect { feed.events_between(from..to) }
+            .to raise_error(%r{https://github.com/Aupajo/almanack/issues/36})
+        end
+      end
     end
 
     describe "#serialized_between" do
