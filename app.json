@@ -2,7 +2,7 @@
   "name": "Almanack",
   "description": "Combine iCal, Google Calendar, and Meetup.com events into a single calendar with a public website and calendar subscription feed.",
   "repository": "https://github.com/Aupajo/almanack",
-  "keywords": ["calendar", "events", "meetup", "gcal" , "ical", "web", "feed", "rss"],
+  "keywords": ["calendar", "events", "gcal" , "ical", "web", "feed", "rss"],
   "buildpacks": [
     { "url": "heroku/ruby" }
   ],
@@ -20,16 +20,8 @@
       "description": "An optional list of iCal feed URLs separated by spaces. For Google Calendars, look for the “address in iCal format” URLs in the calendar's settings.",
       "required": false
     },
-    "MEETUP_COM_GROUPS": {
-      "description": "An optional list of Meetup.com groups to subscribe to, separated by spaces. A group can be the full URL (e.g. `https://www.meetup.com/Christchurch-Ruby-Group/`) or the URL slug (e.g. `Christchurch-Ruby-Group`). Requires MEETUP_COM_API_KEYS also be set.",
-      "required": false
-    },
-    "MEETUP_COM_API_KEYS": {
-      "description": "If retrieving events from Meetup.com, you need to specify one or more API keys to use. You can find your API key at https://secure.meetup.com/meetup_api/key. If you have a lot of groups, use multiple API keys to avoid hitting API request limits separated by spaces.",
-      "required": false
-    },
     "CACHE_DURATION_IN_SECONDS": {
-      "description": "How long to keep calendar events cached for. Set to `0` to always show an up-to-date calendar, but be wary of API request limits when using Meetup.com. Default is 15 minutes.",
+      "description": "How long to keep calendar events cached for. Set to `0` to always show an up-to-date calendar.",
       "value": "900"
     },
     "DAYS_LOOKAHEAD": {

@@ -73,14 +73,11 @@ module Almanack
     end
 
     describe "#meetup_group" do
-      it "adds a Meetup group event source" do
-        config = Configuration.new
-        expect(config.event_sources.size).to eq(0)
-
-        config.add_meetup_group(group_urlname: "CHC-JS", key: "secrettoken")
-
-        expect(config.event_sources.size).to eq(1)
-        expect(config.event_sources.first).to be_an_instance_of(EventSource::MeetupGroup)
+      it "raises an error" do
+        expect {
+          Configuration.new
+            .add_meetup_group(group_urlname: "CHC-JS", key: "secrettoken")
+        }.to raise_error(%r{https://github.com/Aupajo/almanack/issues/36})
       end
     end
 

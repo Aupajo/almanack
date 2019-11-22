@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    almanack (1.1.5)
+    almanack (1.2.0)
       activesupport
       addressable
       faraday

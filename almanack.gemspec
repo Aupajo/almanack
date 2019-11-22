@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Almanack::VERSION
   spec.authors       = ["Pete Nicholls"]
   spec.email         = ["aupajo@gmail.com"]
-  spec.summary       = %q{Combined events calendar for Google Calendar, iCal, Meetup.com and friends.}
+  spec.summary       = %q{Combined events calendar for Google Calendar, iCal, and friends.}
   spec.homepage      = Almanack::HOMEPAGE
   spec.license       = "MIT"
 
