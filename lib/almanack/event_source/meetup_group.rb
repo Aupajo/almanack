@@ -2,6 +2,7 @@ module Almanack
   module EventSource
     class MeetupGroup
       def initialize(options = {})
+        warn "Meetup have disabled support for API keys. Read more at https://github.com/Aupajo/almanack/issues/36"
         @request_options = options
         @group_properties = {}
       end
@@ -108,10 +109,20 @@ module Almanack
         data = JSON.parse(response.body)
 
         if data['problem']
-          raise MeetupAPIError, data['problem']
+          raise MeetupAPIError, error_message_from(data)
         end
 
         data
+      end
+
+      def error_message_from(data)
+        message = [data['problem'], data['details']].compact.join(' - ')
+
+        if message.include?('not authorized')
+          message << ' ⚠️ See https://github.com/Aupajo/almanack/issues/36 for more details'
+        end
+
+        message
       end
     end
   end
