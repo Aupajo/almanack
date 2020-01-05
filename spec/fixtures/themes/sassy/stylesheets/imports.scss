@@ -1,1 +1,3 @@
-@import 'imported';
+@import 'variables';
+
+imports { passes: $passes; }

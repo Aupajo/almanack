@@ -1,7 +1,7 @@
 require "rack/contrib"
 require "sinatra"
 require "sinatra/reloader"
-require "sass"
+require "sassc"
 require "almanack"
 
 module Almanack

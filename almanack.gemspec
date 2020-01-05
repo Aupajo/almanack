@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "sinatra"
   spec.add_dependency "sinatra-contrib"
-  spec.add_dependency "sass"
+  spec.add_dependency "sassc"
   spec.add_dependency "ri_cal"
   spec.add_dependency "addressable"
   spec.add_dependency "thor"
