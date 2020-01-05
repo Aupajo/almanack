@@ -29,8 +29,8 @@ module Almanack
       end
 
       def register_sass_loadpaths!
-        if !Sass.load_paths.include?(theme_stylesheet_path)
-          Sass.load_paths << theme_stylesheet_path
+        if !SassC.load_paths.include?(theme_stylesheet_path)
+          SassC.load_paths << theme_stylesheet_path
         end
       end
     end
