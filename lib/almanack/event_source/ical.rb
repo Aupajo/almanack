@@ -8,7 +8,21 @@ module Almanack
       end
 
       def events_between(date_range)
-        occurrences_between(date_range).map(&method(:event_from))
+        return enum_for(__method__, date_range).to_a unless block_given?
+
+        from, to = [date_range.min, date_range.max]
+
+        each_ical_event do |ical_event|
+          if ical_event.rrule.empty?
+            if from < ical_event.dtend
+              yield event_from(ical_event)
+            end
+          else
+            ical_event.occurrences_between(from, to).each do |occurrence|
+              yield event_from(ical_event, occurrence: occurrence)
+            end
+          end
+        end
       end
 
       def serialized_between(date_range)
@@ -21,23 +35,13 @@ module Almanack
 
       private
 
-      def occurrences_between(date_range, &block)
-        return enum_for(__method__, date_range) unless block_given?
-
-        query = { starting: date_range.min, before: date_range.max }
-
-        each_event do |ical_event|
-          ical_event.occurrences(query).each(&block)
-        end
-      end
-
-      def event_from(occurrence)
+      def event_from(ical_event, occurrence: nil)
         Event.new(
-          title: occurrence.summary,
-          start_time: occurrence.dtstart,
-          end_time: occurrence.dtend,
-          description: occurrence.description,
-          location: occurrence.location
+          title: ical_event.summary,
+          start_time: occurrence&.start_time || ical_event.dtstart,
+          end_time: occurrence&.end_time || ical_event.dtend,
+          description: ical_event.description,
+          location: ical_event.location
         )
       end
 
@@ -45,13 +49,9 @@ module Almanack
         io.respond_to?(:read) ? io.read : io
       end
 
-      def entities
-        RiCal.parse_string(read_io)
-      end
-
-      def each_event(&block)
-        entities.each do |entity|
-          entity.events.each(&block) if entity.respond_to?(:events)
+      def each_ical_event(&block)
+        Icalendar::Calendar.parse(read_io).each do |calendar|
+          calendar.events.each(&block)
         end
       end
     end

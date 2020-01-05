@@ -10,9 +10,9 @@ module Almanack::Representation
       Timecop.freeze(1962, 2, 10) do
         feed = IcalFeed.from(Almanack.calendar)
 
-        parsed = RiCal.parse_string(feed.to_s)
+        parsed = Icalendar::Calendar.parse(feed.to_s)
 
-        first_event = parsed.entries.first.events.first
+        first_event = parsed.first.events.first
 
         expect(first_event.summary).to eq 'MA-6 First US Manned Spaceflight'
         expect(first_event.dtstart).to eq Date.parse("1962-2-20")
