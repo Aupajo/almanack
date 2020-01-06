@@ -13,7 +13,7 @@ See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.her
 ## Features
 
 * Aggregate multiple calendars together into one stream
-* Supports iCal feeds (incuding Google Calendars)
+* Supports iCal feeds (including Google Calendars)
 * ~Supports Meetup.com groups~ (see https://github.com/Aupajo/almanack/issues/36)
 * Just supply a hash to create any arbitrary event
 * Supports being freely hosted on Heroku
@@ -21,6 +21,10 @@ See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.her
 * Server optional (you can use the underlying calendar library by itself)
 * Rack-compatible (can be mounted inside a Rails app if needed)
 * Produces iCal feed for smartphone and desktop calendar apps to subscribe to
+
+## Changelog
+
+See [CHANGELOG](CHANGELOG.md).
 
 ## Simple setup
 
