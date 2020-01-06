@@ -1,7 +1,7 @@
 
 RSpec.describe "Consolidated iCal feed", :feature do
   let(:now) { Time.now }
-  let(:parsed_feed) { RiCal.parse_string(Almanack.calendar.ical_feed) }
+  let(:parsed_feed) { Icalendar::Calendar.parse(Almanack.calendar.ical_feed) }
   let(:parsed_cal) { parsed_feed.first }
   let(:parsed_events) { parsed_cal.events }
 
@@ -28,7 +28,7 @@ RSpec.describe "Consolidated iCal feed", :feature do
 
   it "should contain one calendar entity" do
     expect(parsed_feed.length).to eq(1)
-    expect(parsed_feed.first).to be_an_instance_of(RiCal::Component::Calendar)
+    expect(parsed_feed.first).to be_an_instance_of(Icalendar::Calendar)
   end
 
   it "contains a year's worth of events" do

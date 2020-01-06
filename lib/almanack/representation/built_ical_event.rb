@@ -18,7 +18,7 @@ module Almanack
       private
 
       def build!
-        @ical_event = RiCal.Event
+        @ical_event = Icalendar::Event.new
         set_summary
         set_start_time
         set_end_time
@@ -32,7 +32,7 @@ module Almanack
       end
 
       def set_start_time
-        if event.start_time.is_a?(Date)
+        if event.start_time.is_a?(Icalendar::Values::Date)
           ical_event.dtstart = event.start_time
         else
           ical_event.dtstart = event.start_time.utc
@@ -40,7 +40,7 @@ module Almanack
       end
 
       def set_end_time
-        if event.end_time.is_a?(Date)
+        if event.end_time.is_a?(Icalendar::Values::Date)
           ical_event.dtend = event.end_time
         else
           ical_event.dtend = (event.end_time || event.start_time + default_event_duration ).utc

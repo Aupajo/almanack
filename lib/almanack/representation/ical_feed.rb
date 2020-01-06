@@ -12,7 +12,7 @@ module Almanack
       end
 
       def to_s
-        ical.to_s
+        ical.to_ical
       end
 
       def self.from(calendar)
@@ -26,8 +26,8 @@ module Almanack
       end
 
       def ical_calendar
-        events.each_with_object(RiCal.Calendar) do |event, calendar_component|
-          calendar_component.add_subcomponent ical_event_for(event)
+        events.each_with_object(Icalendar::Calendar.new) do |event, calendar|
+          calendar.add_event ical_event_for(event)
         end
       end
 

@@ -13,7 +13,7 @@ See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.her
 ## Features
 
 * Aggregate multiple calendars together into one stream
-* Supports iCal feeds (incuding Google Calendars)
+* Supports iCal feeds (including Google Calendars)
 * ~Supports Meetup.com groups~ (see https://github.com/Aupajo/almanack/issues/36)
 * Just supply a hash to create any arbitrary event
 * Supports being freely hosted on Heroku
@@ -21,6 +21,10 @@ See a demo running at [http://chch-events.herokuapp.com/](http://chch-events.her
 * Server optional (you can use the underlying calendar library by itself)
 * Rack-compatible (can be mounted inside a Rails app if needed)
 * Produces iCal feed for smartphone and desktop calendar apps to subscribe to
+
+## Changelog
+
+See [CHANGELOG](CHANGELOG.md).
 
 ## Simple setup
 
@@ -38,17 +42,14 @@ This option can host your calendar for free light use.
 
 Almanack is cryptographically signed. You can install it like any other gem, but you can also do so in a way that verifies the gem hasn't been tampered with.
 
-Add my public key (if you haven’t already) as a trusted certificate:
+Add my public key (if you haven’t already) as a trusted certificate and install the gem:
 
     gem cert --add <(curl -Ls https://raw.github.com/aupajo/almanack/master/certs/aupajo.pem)
-
-Then install the gem:
-
     gem install almanack -P HighSecurity
 
 All my dependencies are cryptographically signed, so you can use the `HighSecurity` option. [Read more](http://docs.seattlerb.org/rubygems/Gem/Security.html).
 
-Checksums for released gems can be found in `checksums`.
+Checksums for released gems can be verified in `checksums`.
 
 ## Creating a calendar
 
