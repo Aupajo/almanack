@@ -46,6 +46,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "timecop"
-  spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "nokogiri", "~> 1.10.8"
   spec.add_development_dependency "bundler-audit"
 end

@@ -118,7 +118,7 @@ DEPENDENCIES
   almanack!
   bundler (~> 2.0)
   bundler-audit
-  nokogiri
+  nokogiri (~> 1.10.8)
   pry
   rack-test
   rake (~> 10.0)
