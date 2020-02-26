@@ -1,3 +1,7 @@
+### 2020-02-25, Version 1.3.1
+
+* Security update: upgrade Nokogiri to 1.10.8 to address [CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
+
 ### 2020-01-07, Version 1.3.0
 
 * [#42](https://github.com/Aupajo/almanack/pull/42) Replace [RiCal](https://github.com/rubyredrick/ri_cal) with [icalendar](https://github.com/icalendar/icalendar) to support the extended RFC 5455 calendar standard
