@@ -1,3 +1,7 @@
+### Unreleased
+
+* Upgrade Rake dependency to ~> 13
+
 ### 2020-02-25, Version 1.3.1
 
 * Security update: upgrade Nokogiri to 1.10.8 to address [CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
