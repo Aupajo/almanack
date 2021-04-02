@@ -14,6 +14,8 @@ module Almanack
 
         each_ical_event do |ical_event|
           if ical_event.rrule.empty?
+            ical_event.dtend = ical_event.dtend||end_time_from_duration(ical_event)
+
             if from < ical_event.dtend
               yield event_from(ical_event)
             end
@@ -34,6 +36,15 @@ module Almanack
       end
 
       private
+
+      def end_time_from_duration(ical_event)
+        start = ical_event.dtstart
+        start += ical_event.duration.weeks.send('weeks')
+        start += ical_event.duration.weeks.send('days')
+        start += ical_event.duration.weeks.send('hours')
+        start += ical_event.duration.weeks.send('minutes')
+        start += ical_event.duration.weeks.send('seconds')
+      end
 
       def event_from(ical_event, occurrence: nil)
         Event.new(
