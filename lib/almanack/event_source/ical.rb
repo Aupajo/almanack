@@ -40,10 +40,10 @@ module Almanack
       def end_time_from_duration(ical_event)
         start = ical_event.dtstart
         start += ical_event.duration.weeks.send('weeks')
-        start += ical_event.duration.weeks.send('days')
-        start += ical_event.duration.weeks.send('hours')
-        start += ical_event.duration.weeks.send('minutes')
-        start += ical_event.duration.weeks.send('seconds')
+        start += ical_event.duration.days.send('days')
+        start += ical_event.duration.hours.send('hours')
+        start += ical_event.duration.minutes.send('minutes')
+        start += ical_event.duration.seconds.send('seconds')
       end
 
       def event_from(ical_event, occurrence: nil)
