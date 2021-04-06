@@ -1,3 +1,9 @@
+## Unmaintained
+
+I'm no longer actively maintaining almanack.
+
+---
+
 # Almanack
 
 [![Build Status](https://travis-ci.org/Aupajo/almanack.svg)](https://travis-ci.org/Aupajo/almanack)
